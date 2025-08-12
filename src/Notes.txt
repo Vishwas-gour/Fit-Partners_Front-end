@@ -1,0 +1,36 @@
+==========================[ Also need to do]=================================
+make theme based ui / and able to change font 
+when click on any button laoder inside button 
+if stock is lesses then 20 then => (stock)  Only a few left! Order soon to grab the deal.
+after applying promocode code will deleted
+add change image hover on charts
+need to change remove button theme 
+make -/+ buttom ovel
+when buy -1 from stock
+
+
+==========================[Need to fix]=================================
+loading animatin at every step
+page not found style
+3 vendors
+pagination
+
+=============== [ADmin panel] ===============
+add promo-code
+can delete block use if user cancel item 10 time 
+profit for on sale donuts, graphs etc
+admin can add promocode
+admin can block user
+bashboard ->
+     having donuts ,
+     graphs for find profit,
+     delete any reviews,
+     add promo_codes
+
+
+
+=============== NEED TO ADD NEW THINGS
+when user register then address form open ;
+        -> becouse of that when payint the form also have full address details
+user will able to contect number of employee
+

@@ -1,0 +1,9 @@
+
+.slidebar img{
+    height: 40vw;
+    width: 100vw;
+}
+.carousel-caption{
+    color: rgb(0, 0, 0);
+    mix-blend-mode: difference;
+}

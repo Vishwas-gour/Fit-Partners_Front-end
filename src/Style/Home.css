@@ -1,0 +1,441 @@
+/* ====================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   These make it easy to switch between light and dark themes
+   ==================================== */
+
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #5a6c7d;
+  --accent-color: #3498db;
+  --hover-color: #2980b9;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --border-color: #e1e8ed;
+  --overlay-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --accent-color: #4a9eff;
+  --hover-color: #357abd;
+  --shadow-light: rgba(255, 255, 255, 0.1);
+  --shadow-medium: rgba(255, 255, 255, 0.15);
+  --border-color: #404040;
+  --overlay-color: rgba(0, 0, 0, 0.6);
+}
+
+/* ====================================
+   GLOBAL STYLES & RESET
+   ==================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: all 0.3s ease;
+}
+
+/* ====================================
+   MAIN HOME CONTAINER
+   ==================================== */
+
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
+}
+
+/* ====================================
+   SECTION STYLES
+   Each section has consistent spacing and layout
+   ==================================== */
+
+.sec {
+  padding: 60px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+/* Alternate background colors for sections */
+.sec:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+.sec:nth-child(odd) {
+  background-color: var(--bg-primary);
+}
+
+/* ====================================
+   HEADING STYLES
+   ==================================== */
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Decorative underline for headings */
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), var(--hover-color));
+  border-radius: 2px;
+}
+
+/* ====================================
+   IMAGE CONTAINER STYLES
+   ==================================== */
+
+.images {
+  display: grid;
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+}
+
+/* ====================================
+   SECTION 1: SHOP FOR (3 COLUMNS)
+   ==================================== */
+
+.sec-1 .images {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sec-1 .images img {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sec-1 .images img:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+}
+
+/* ====================================
+   SECTION 2: FESTIVE PICKS (4 COLUMNS)
+   ==================================== */
+
+.sec-2 .images {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-2 .images img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px var(--shadow-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sec-2 .images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+/* ====================================
+   SECTION 3: SHOE STYLE COLLECTION (4 COLUMNS WITH TEXT)
+   ==================================== */
+
+.sec-3 .images {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-3 .images > div {
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sec-3 .images > div:hover {
+  transform: translateY(-8px);
+}
+
+.sec-3 .images img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow-light);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.sec-3 .images > div:hover img {
+  box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+.about {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.sec-3 .images > div:hover .about {
+  color: var(--accent-color);
+}
+
+/* ====================================
+   SECTION 4: GEAR UP FOR SPORTS (GRID LAYOUT)
+   ==================================== */
+
+.sec-4 .images {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.sec-4 .images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sec-4 .images img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+/* ====================================
+   SECTION 5: WHY FITPARTNER (3 COLUMNS WITH TEXT)
+   ==================================== */
+
+.sec-5 .images {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sec-5 .images > div {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: 15px;
+  box-shadow: 0 6px 20px var(--shadow-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sec-5 .images > div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+}
+
+.sec-5 .images img {
+  width: 100%;
+  max-width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.sec-5 .images > div:hover img {
+  transform: scale(1.1);
+}
+
+.sec-5 .about {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 15px;
+}
+
+/* ====================================
+   THEME TOGGLE BUTTON (OPTIONAL)
+   Add this to your component if you want a theme switcher
+   ==================================== */
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--shadow-medium);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .sec {
+    padding: 40px 15px;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .images {
+    gap: 20px;
+  }
+  
+  .sec-1 .images {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  
+  .sec-2 .images {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .sec-3 .images {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .sec-4 .images {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .sec-5 .images {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .sec {
+    padding: 30px 10px;
+  }
+  
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+  
+  .images {
+    gap: 15px;
+  }
+  
+  .sec-1 .images img,
+  .sec-2 .images img,
+  .sec-3 .images img,
+  .sec-4 .images img {
+    height: auto;
+    min-height: 180px;
+  }
+  
+  .about {
+    font-size: 1rem;
+  }
+  
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ====================================
+   LOADING ANIMATION (FOR AOS)
+   ==================================== */
+
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+/* ====================================
+   ACCESSIBILITY IMPROVEMENTS
+   ==================================== */
+
+/* Focus styles for keyboard navigation */
+.images img:focus,
+.images > div:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+  }
+  
+  [data-theme="dark"] {
+    --shadow-light: rgba(255, 255, 255, 0.3);
+    --shadow-medium: rgba(255, 255, 255, 0.4);
+  }
+}

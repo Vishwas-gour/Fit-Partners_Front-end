@@ -1,0 +1,343 @@
+:root {
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #ffffff;
+    --sidebar-title-color: #ffffff;
+    --sidebar-hover-bg: rgba(255, 255, 255, 0.1);
+    --sidebar-active-bg: #3b82f6;
+    --sidebar-active-hover: #2563eb;
+    --sidebar-logout-bg: #dc2626;
+    --sidebar-logout-hover: #b91c1c;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    --sidebar-padding: 2rem 1.5rem;
+    --link-padding: 1rem 1.5rem;
+    --link-gap: 1rem;
+    --nav-gap: 0.5rem;
+
+    --sidebar-width: 280px;
+    --border-radius: 0.5rem;
+    --font-size-title: 1.5rem;
+    --font-size-link: 1rem;
+    --icon-size: 1.25rem;
+
+    --transition-speed: 0.3s;
+    --hover-transform: translateX(5px);
+}
+
+.dark-mode {
+    --sidebar-bg: #0f172a;
+    --sidebar-text: #f1f5f9;
+    --sidebar-title-color: #f8fafc;
+    --sidebar-hover-bg: rgba(255, 255, 255, 0.15);
+    --sidebar-active-bg: #60a5fa;
+    --sidebar-active-hover: #3b82f6;
+    --sidebar-logout-bg: #ef4444;
+    --sidebar-logout-hover: #dc2626;
+    --sidebar-border: rgba(255, 255, 255, 0.15);
+    --sidebar-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+
+ 
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ .app {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     transition: all var(--transition-speed) ease;
+ }
+
+ /* ========================================
+           SIDEBAR MAIN CONTAINER
+           ========================================
+        */
+ .sidebar {
+     height: 100vh;
+     width: fit-content;
+     background-color: var(--sidebar-bg);
+     padding: 1rem 2rem;
+     box-shadow: var(--sidebar-shadow);
+
+     scrollbar-width: none;
+     transition: all var(--transition-speed) ease;
+     animation: slideInLeft var(--transition-speed) ease-out;
+ }
+
+ /* Sidebar entry animation */
+ @keyframes slideInLeft {
+     from {
+         transform: translateX(-100%);
+         opacity: 0;
+     }
+
+     to {
+         transform: translateX(0);
+         opacity: 1;
+     }
+ }
+
+ /* ========================================
+           SIDEBAR TITLE
+           ========================================
+        */
+ .sidebar-title {
+     /* === STYLING === */
+     color: var(--sidebar-title-color);
+     font-size: var(--font-size-title);
+     font-weight: 700;
+     text-align: center;
+
+     /* === SPACING === */
+     margin-bottom: 2rem;
+     padding-bottom: 1rem;
+
+     /* === BORDER === */
+     border-bottom: 2px solid var(--sidebar-border);
+
+     /* === ANIMATION === */
+     animation: fadeInDown var(--transition-speed) ease-out 0.2s both;
+ }
+
+ @keyframes fadeInDown {
+     from {
+         opacity: 0;
+         transform: translateY(-20px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* ========================================
+           SIDEBAR NAVIGATION
+           ========================================
+        */
+ .sidebar-nav {
+     display: flex;
+     flex-direction: column;
+     gap: var(--nav-gap);
+ }
+
+ /* ========================================
+           SIDEBAR LINKS & BUTTONS
+           ========================================
+        */
+ .sidebar-link {
+     /* === LAYOUT === */
+     display: flex;
+     align-items: center;
+     gap: var(--link-gap);
+     width: 100%;
+
+     /* === STYLING === */
+     padding: var(--link-padding);
+     color: var(--sidebar-text);
+     background: none;
+     border: none;
+     border-radius: var(--border-radius);
+
+     /* === TYPOGRAPHY === */
+     font-weight: 500;
+     font-size: var(--font-size-link);
+     text-decoration: none;
+     text-align: left;
+
+     /* === INTERACTION === */
+     cursor: pointer;
+
+     /* === ANIMATIONS === */
+     transition: all var(--transition-speed) ease;
+
+     /* === STAGGERED ENTRY ANIMATION === */
+     animation: fadeInUp var(--transition-speed) ease-out both;
+ }
+
+ /* Staggered animation delays for each link */
+ .sidebar-link:nth-child(1) {
+     animation-delay: 0.1s;
+ }
+
+ .sidebar-link:nth-child(2) {
+     animation-delay: 0.2s;
+ }
+
+ .sidebar-link:nth-child(3) {
+     animation-delay: 0.3s;
+ }
+
+ .sidebar-link:nth-child(4) {
+     animation-delay: 0.4s;
+ }
+
+ .sidebar-link:nth-child(5) {
+     animation-delay: 0.5s;
+ }
+
+ .sidebar-link:nth-child(6) {
+     animation-delay: 0.6s;
+ }
+
+ .sidebar-link:nth-child(7) {
+     animation-delay: 0.7s;
+ }
+
+ @keyframes fadeInUp {
+     from {
+         opacity: 0;
+         transform: translateY(20px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* ========================================
+           LINK HOVER EFFECTS
+           ========================================
+        */
+ .sidebar-link:hover {
+     background-color: var(--sidebar-hover-bg);
+     transform: var(--hover-transform);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ /* ========================================
+           ACTIVE LINK STYLES
+           ========================================
+        */
+ .sidebar-link.active {
+     background-color: var(--sidebar-active-bg);
+     color: white;
+     font-weight: 600;
+     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+ }
+
+ .sidebar-link.active:hover {
+     background-color: var(--sidebar-active-hover);
+ }
+
+ /* ========================================
+           SIDEBAR ICONS
+           ========================================
+        */
+ .sidebar-icon {
+     font-size: var(--icon-size);
+     min-width: 24px;
+     display: inline-block;
+     text-align: center;
+ }
+
+ /* ========================================
+           LOGOUT BUTTON SPECIAL STYLING
+           ========================================
+        */
+ .sidebar-link.logout {
+     margin-top: 2rem;
+     background-color: var(--sidebar-logout-bg);
+     color: white;
+     font-weight: 600;
+ }
+
+ .sidebar-link.logout:hover {
+     background-color: var(--sidebar-logout-hover);
+     transform: var(--hover-transform);
+ }
+
+ /* ========================================
+           ACCESSIBILITY
+           ========================================
+        */
+ .sidebar-link:focus {
+     outline: 2px solid var(--sidebar-active-bg);
+     outline-offset: 2px;
+ }
+
+ .sidebar-link.logout:focus {
+     outline-color: var(--sidebar-logout-bg);
+ }
+
+ /* ========================================
+           RESPONSIVE DESIGN
+           ========================================
+        */
+ @media (max-width: 768px) {
+     .sidebar {
+         width: 100%;
+         height: auto;
+         position: relative;
+     }
+ }
+
+ /* ========================================
+           DEMO STYLES (REMOVE THESE IN YOUR APP)
+           ========================================
+        */
+ .sidebar-theme-toggle {
+     position: fixed;
+      
+     top: 1rem;
+     right: 1rem;
+     z-index: 1000;
+     padding: 0.5rem 1rem;
+     background-color: #3b82f6;
+     color: white;
+     border: none;
+     border-radius: 0.5rem;
+     cursor: pointer;
+     font-weight: 600;
+     transition: all 0.3s ease;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ .sidebar-theme-toggle:hover {
+     background-color: #2563eb;
+     transform: translateY(-2px);
+ }
+
+ .demo-container {
+     display: flex;
+ }
+
+ .demo-content {
+     margin-left: 280px;
+     padding: 2rem;
+     background-color: #f8fafc;
+     min-height: 100vh;
+     flex: 1;
+ }
+
+ .dark-mode .demo-content {
+     background-color: #1f2937;
+     color: white;
+ }
+
+ .sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+
+    

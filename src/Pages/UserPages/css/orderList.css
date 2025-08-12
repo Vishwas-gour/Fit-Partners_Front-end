@@ -1,0 +1,763 @@
+/* ===== CSS VARIABLES FOR LIGHT AND DARK MODE ===== */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #e0e0e0;
+  --border-light: #f0f0f0;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.16);
+  
+  /* Status Colors */
+  --status-delivered: #28a745;
+  --status-on-way: #007bff;
+  --status-cancelled: #dc3545;
+  --status-returned: #6c757d;
+  
+  /* Button Colors */
+  --btn-primary: #007bff;
+  --btn-primary-hover: #0056b3;
+  --btn-success: #28a745;
+  --btn-success-hover: #1e7e34;
+  --btn-danger: #dc3545;
+  --btn-danger-hover: #c82333;
+  --btn-secondary: #6c757d;
+  --btn-secondary-hover: #545b62;
+  
+  /* Accent Colors */
+  --accent-color: #007bff;
+  --price-color: #e67e22;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #333333;
+  --bg-sidebar: #242424;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --border-color: #404040;
+  --border-light: #4a4a4a;
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  
+  /* Status Colors (adjusted for dark mode) */
+  --status-delivered: #51cf66;
+  --status-on-way: #4dabf7;
+  --status-cancelled: #ff6b6b;
+  --status-returned: #868e96;
+  
+  /* Button Colors (adjusted for dark mode) */
+  --btn-primary: #4dabf7;
+  --btn-primary-hover: #339af0;
+  --btn-success: #51cf66;
+  --btn-success-hover: #40c057;
+  --btn-danger: #ff6b6b;
+  --btn-danger-hover: #ff5252;
+  --btn-secondary: #868e96;
+  --btn-secondary-hover: #748ffc;
+  
+  /* Accent Colors */
+  --accent-color: #4dabf7;
+  --price-color: #ffa726;
+}
+
+
+/* ===== MAIN CONTAINER ===== */
+.orderPage-container {
+  /* Layout */
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+/* Container when filters are open */
+.orderPage-container.filters-open {
+  margin-left: 0;
+}
+
+
+/* ===== SIDEBAR FILTERS ===== */
+.orderPage-filters {
+  position: fixed;
+  left: -300px;
+  top: 100;
+  width: 300px;
+  height: 100vh;
+  z-index: 5;
+  
+  /* Styling */
+  background-color: var(--bg-sidebar);
+  border-right: 2px solid var(--border-color);
+  box-shadow: 2px 0 10px var(--shadow-light);
+  
+  /* Layout */
+  padding: 20px;
+  overflow-y: auto;
+  
+  /* Animation */
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar when open */
+.orderPage-filters.open {
+  left: 0;
+}
+
+.orderPage-filter-toggle {
+  position: fixed;
+  align-items: center;
+  display: flex;
+  top: 150px;
+  left: 10px;
+  padding: 20px   10px;
+  background-color: var(--btn-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 2px 2px 8px var(--shadow-medium);
+  cursor: pointer;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+
+
+
+/* Filter group container */
+.orderPage-filter-group {
+  /* Spacing */
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Filter group title */
+.orderPage-filter-title {
+  /* Text styling */
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  
+  /* Spacing */
+  display: block;
+  margin-bottom: 15px;
+  
+  /* Visual separator */
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* Radio button labels */
+.orderPage-radio-label {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  /* Styling */
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  /* Text */
+  font-size: 14px;
+  color: var(--text-secondary);
+  
+  /* Transition */
+  transition: all 0.3s ease;
+}
+
+.orderPage-radio-label:hover {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
+
+/* Radio input styling */
+.orderPage-radio-label input[type="radio"] {
+  /* Custom radio button */
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color);
+}
+
+/* Radio icon styling */
+.radio-icon {
+  /* Icon styling */
+  font-size: 16px;
+  color: var(--accent-color);
+  
+  /* Minimum width for alignment */
+  min-width: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Search button */
+.react-icon-btn.search {
+  /* Full width */
+  width: 100%;
+  
+  /* Styling */
+  background-color: var(--btn-success);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  
+  /* Text */
+  font-size: 16px;
+  font-weight: 600;
+  
+  /* Effects */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.react-icon-btn.search:hover {
+  background-color: var(--btn-success-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+
+/* ===== ORDERS SECTION ===== */
+.orderPage-orders-section {
+  /* Layout */
+  flex: 1;
+  padding: 30px;
+  
+  /* Minimum width for content */
+  min-width: 0;
+  
+  /* Margin when sidebar is open */
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+/* Adjust margin when filters are open */
+.orderPage-container.filters-open .orderPage-orders-section {
+  margin-left: 300px;
+}
+
+/* Orders title */
+.orderPage-orders-title {
+  /* Text styling */
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  
+  /* Spacing */
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  
+  /* Visual accent */
+  border-bottom: 3px solid var(--accent-color);
+  
+  /* Center alignment */
+  text-align: center;
+}
+
+
+/* ===== ORDER CARDS ===== */
+.orderList-order-card {
+  /* Styling */
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  
+  /* Spacing */
+  margin-bottom: 25px;
+  padding: 25px;
+  
+  /* Shadow for depth */
+  box-shadow: 0 4px 16px var(--shadow-light);
+  
+  /* Animation */
+  transition: all 0.3s ease;
+}
+
+.orderList-order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px var(--shadow-medium);
+  border-color: var(--accent-color);
+}
+
+/* Order header */
+.orderList-order-header {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Spacing */
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Order status badges */
+.orderList-status {
+  /* Styling */
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Default color */
+  background-color: var(--text-muted);
+  color: white;
+  
+  /* Animation */
+  transition: all 0.3s ease;
+}
+
+/* Status-specific colors */
+.orderList-status.delivered {
+  background-color: var(--status-delivered);
+}
+
+.orderList-status.on_the_way {
+  background-color: var(--status-on-way);
+}
+
+.orderList-status.cancelled {
+  background-color: var(--status-cancelled);
+}
+
+.orderList-status.returned {
+  background-color: var(--status-returned);
+}
+
+/* Order details section */
+.orderList-order-details {
+  /* Layout */
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  
+  /* Spacing */
+  margin-bottom: 20px;
+  
+  /* Text styling */
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.orderList-order-details p {
+  margin: 0;
+}
+
+.orderList-order-details b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+
+/* ===== ITEM CARDS ===== */
+.orderList-item-list {
+  /* Horizontal scroll layout */
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) var(--bg-secondary);
+}
+
+.orderList-item-card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* Fixed width for horizontal scroll */
+  min-width: 220px;
+  flex-shrink: 0;
+  
+  /* Styling */
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  
+  /* Spacing */
+  padding: 20px 15px;
+  
+  /* Animation */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.orderList-item-card:hover {
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transform: translateY(-3px);
+}
+
+/* Item image */
+.orderList-item-image {
+  /* Size */
+  width: 120px;
+  height: 120px;
+  
+  /* Styling */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  
+  /* Animation */
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.orderList-item-card:hover .orderList-item-image {
+  transform: scale(1.05);
+}
+
+/* Item info section */
+.orderList-item-info {
+  /* Layout */
+  text-align: center;
+  width: 100%;
+}
+
+.orderList-item-info h4 {
+  /* Text styling */
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  
+  /* Spacing */
+  margin: 0 0 8px 0;
+  
+  /* Handle long text */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderList-item-info p {
+  /* Text styling */
+  font-size: 13px;
+  color: var(--text-secondary);
+  
+  /* Spacing */
+  margin: 4px 0;
+}
+
+/* Review button */
+.orderList-review-btn {
+  /* Styling */
+  background-color: var(--btn-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  
+  /* Size */
+  padding: 8px 12px;
+  font-size: 12px;
+  width: 100%;
+  
+  /* Effects */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Spacing */
+  margin-top: 10px;
+}
+
+.orderList-review-btn:hover {
+  background-color: var(--btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Review section */
+.orderList-review-section-side {
+  /* Position */
+  position: absolute;
+  /* top: 100%; */
+  left: 0;
+  right: 0;
+  z-index: 10;
+  
+  /* Styling */
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 12px 12px;
+  
+  /* Spacing */
+  padding: 15px;
+  
+  /* Shadow */
+  box-shadow: 0 4px 16px var(--shadow-medium);
+  
+  /* Animation */
+  animation: slideDown 0.3s ease;
+}
+
+/* Custom scrollbar for horizontal scroll */
+.orderList-item-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.orderList-item-list::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.orderList-item-list::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.orderList-item-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ===== ORDER ACTIONS ===== */
+.orderList-order-actions {
+  /* Layout */
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  
+  /* Spacing */
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Cancel button */
+.orderList-cancel-btn {
+  /* Styling */
+  background-color: var(--btn-danger);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  
+  /* Size */
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  
+  /* Effects */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.orderList-cancel-btn:hover {
+  background-color: var(--btn-danger-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Invoice button */
+.orderList-invoice-btn {
+  /* Styling */
+  background-color: var(--btn-secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  
+  /* Size */
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  
+  /* Effects */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.orderList-invoice-btn:hover {
+  background-color: var(--btn-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .orderPage-filters {
+    width: 280px;
+  }
+  
+  .orderPage-container.filters-open .orderPage-orders-section {
+    margin-left: 280px;
+  }
+  
+  .orderList-order-details {
+    gap: 20px;
+  }
+  
+  .orderList-item-card {
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .orderList-item-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .orderPage-filters {
+    width: 100%;
+    left: -100%;
+  }
+  
+  .orderPage-container.filters-open .orderPage-orders-section {
+    margin-left: 0;
+  }
+  
+  .orderPage-orders-section {
+    padding: 20px 15px;
+  }
+  
+  .orderPage-orders-title {
+    font-size: 24px;
+  }
+  
+  .orderList-order-card {
+    padding: 20px;
+  }
+  
+  /* Keep horizontal scroll on mobile */
+  .orderList-item-card {
+    min-width: 180px;
+    padding: 15px 10px;
+  }
+  
+  .orderList-item-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .orderList-item-info h4 {
+    font-size: 14px;
+  }
+  
+  .orderList-item-info p {
+    font-size: 12px;
+  }
+  
+  .orderList-order-actions {
+    justify-content: center;
+  }
+  
+  .orderList-order-details {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .orderPage-orders-section {
+    padding: 15px 10px;
+  }
+  
+  .orderList-order-card {
+    padding: 15px;
+  }
+  
+  /* Even smaller cards on tiny screens */
+  .orderList-item-card {
+    min-width: 160px;
+    padding: 12px 8px;
+  }
+  
+  .orderList-item-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .orderList-order-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .orderList-cancel-btn,
+  .orderList-invoice-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* ===== SCROLLBAR STYLING ===== */
+.orderPage-filters::-webkit-scrollbar {
+  width: 6px;
+}
+
+.orderPage-filters::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.orderPage-filters::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.orderPage-filters::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+
+/* ===== ACCESSIBILITY ===== */
+/* Focus styles for keyboard navigation */
+.orderPage-filter-toggle:focus,
+.react-icon-btn.search:focus,
+.orderList-review-btn:focus,
+.orderList-cancel-btn:focus,
+.orderList-invoice-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

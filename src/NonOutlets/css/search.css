@@ -1,0 +1,222 @@
+/* ===== CSS VARIABLES FOR LIGHT AND DARK MODE ===== */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: rgb(231, 231, 231);
+  --bg-secondary: #fefefe;
+  --bg-card: #fff;
+  --text-primary: #333;
+  --text-secondary: black;
+  --text-placeholder: rgb(151, 151, 151);
+  --border-color: rgb(123, 123, 123);
+  --border-light: rgb(213, 213, 213);
+  --shadow-color: rgba(165, 165, 165, 0.54);
+  --shadow-card: rgba(190, 190, 190, 0.54);
+  --shadow-hover: rgba(0, 0, 0, 0.1);
+  --shadow-hover-strong: rgba(0, 0, 0, 0.15);
+  --price-color: #e53935;
+  --card-bg-secondary: #f8f8f8;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-placeholder: #888888;
+  --border-color: #555555;
+  --border-light: #444444;
+  --shadow-color: rgba(0, 0, 0, 0.7);
+  --shadow-card: rgba(0, 0, 0, 0.5);
+  --shadow-hover: rgba(255, 255, 255, 0.1);
+  --shadow-hover-strong: rgba(255, 255, 255, 0.2);
+  --price-color: #ff6b6b;
+  --card-bg-secondary: #404040;
+}
+
+/* ===== YOUR EXISTING STYLES WITH THEME VARIABLES ===== */
+.search-container {
+    position: fixed;
+    padding-bottom: 5rem;
+    background-color: var(--bg-primary);
+    height: 100vh;
+    z-index: 11;
+    right: 0;
+    top: 0;
+    overflow: scroll;
+    scrollbar-width: thin;
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    box-shadow: 3px 5px 5px 1px var(--shadow-color);
+    border-left: 1px solid var(--border-color);
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.full-search {
+    width: 55vw;
+}
+
+@media (max-width:1000px) {
+    .full-search {
+        width: 100vw;
+    }
+}
+
+.half-search {
+    width: 0px;
+}
+
+.search-container .searchBox {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    height: fit-content;
+    z-index: 10;
+    top: 0;
+    height: 4rem;
+    background-color: var(--bg-primary);
+}
+
+.search-container .searchBox .searchInput {
+    position: relative;
+    width: 70%;
+}
+
+.search-container .searchBox .searchInput input {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding-left: 3rem;
+    height: 2.4rem;
+    box-shadow: 3px 5px 5px 1px var(--shadow-card);
+    border-radius: 4rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.search-container .searchBox .searchInput input::placeholder {
+    color: var(--text-placeholder);
+}
+
+.search-container .searchBox .searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    color: var(--text-placeholder);
+    transform: translate(0%, -55%);
+}
+
+.search-container .searchBox button {
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    height: 2.4rem;
+    width: 2.4rem;
+    padding: 0;
+    border-radius: 4rem;
+    box-shadow: 3px 5px 5px 1px var(--shadow-card);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-container .searchBox button:hover {
+    background-color: var(--bg-card);
+    transform: scale(1.05);
+}
+
+.card-rows {
+    padding: 20px;
+}
+
+.search-placeholder {
+    color: var(--text-placeholder);
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
+    margin: 60px 0;
+    padding: 0 20px;
+}
+
+.card-parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow-hover);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 220px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px var(--shadow-hover-strong);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg-secondary);
+}
+
+.card-img .shoe-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.card-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--price-color);
+    margin-bottom: 8px;
+}
+
+/* ===== SCROLLBAR STYLING FOR BOTH THEMES ===== */
+.search-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.search-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.search-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-placeholder);
+}
+
+/* ===== SMOOTH TRANSITIONS FOR THEME SWITCHING ===== */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

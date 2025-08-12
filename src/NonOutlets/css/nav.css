@@ -1,0 +1,569 @@
+/* ========================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   These make it easy to switch between themes
+   ======================================== */
+
+/* Light Theme Colors */
+:root[data-theme="light"] {
+  /* Background colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-hover: #e9ecef;
+  
+  /* Text colors */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-white: #ffffff;
+  
+  /* Brand colors */
+  --brand-primary: #007bff;
+  --brand-hover: #0056b3;
+  
+  /* Border colors */
+  --border-color: #dee2e6;
+  --border-hover: #adb5bd;
+  
+  /* Shadow colors */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Colors */
+:root[data-theme="dark"] {
+  /* Background colors */
+  --bg-primary: #212529;
+  --bg-secondary: #343a40;
+  --bg-hover: #495057;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #adb5bd;
+  --text-white: #ffffff;
+  
+  /* Brand colors */
+  --brand-primary: #0d6efd;
+  --brand-hover: #0b5ed7;
+  
+  /* Border colors */
+  --border-color: #495057;
+  --border-hover: #6c757d;
+  
+  /* Shadow colors */
+  --shadow-light: rgba(255, 255, 255, 0.1);
+  --shadow-medium: rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================
+   GLOBAL NAVIGATION STYLES
+   ======================================== */
+
+/* Reset margins and paddings for navigation elements */
+.myNav-top-bar,
+.myNav-main,
+.myNav-left,
+.myNav-center,
+.myNav-right {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove default list styles */
+.myNav-left,
+.myNav-center,
+.myNav-right {
+  list-style: none;
+}
+
+/* ========================================
+   TOP BAR STYLES
+   ======================================== */
+
+.myNav-top-bar {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  
+  /* Colors and appearance */
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  
+  /* Typography */
+  font-size: 14px;
+  color: var(--text-secondary);
+  
+  /* Smooth color transitions when switching themes */
+  transition: all 0.3s ease;
+}
+
+/* Theme toggle button */
+.myNav-theme-toggle {
+  /* Remove default button styles */
+  background: none;
+  border: none;
+  
+  /* Layout and spacing */
+  padding: 8px 12px;
+  border-radius: 20px;
+  
+  /* Typography */
+  font-size: 18px;
+  cursor: pointer;
+  
+  /* Colors */
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  
+  /* Smooth hover effects */
+  transition: all 0.3s ease;
+}
+
+.myNav-theme-toggle:hover {
+  background-color: var(--brand-primary);
+  transform: scale(1.1);
+}
+
+/* Profile section container */
+.myNav-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.myNav-profile button {
+  /* Remove default button styles */
+  background: none;
+  border: none;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  
+  /* Typography */
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  
+  /* Smooth transitions */
+  transition: color 0.3s ease;
+}
+
+.myNav-profile button:hover {
+  color: var(--brand-primary);
+}
+
+/* ========================================
+   MAIN NAVIGATION STYLES
+   ======================================== */
+
+.myNav-main {
+  /* Layout - Flexbox for horizontal arrangement */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  
+  /* Colors and appearance */
+  background-color: var(--bg-primary);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-light);
+  
+  /* Make it sticky at the top */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   LEFT SECTION - LOGO
+   ======================================== */
+
+.myNav-left {
+  display: flex;
+  align-items: center;
+}
+
+.myNav-logo {
+  /* Remove default link styles */
+  text-decoration: none;
+  
+  /* Typography - Make logo stand out */
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--brand-primary);
+  
+  /* Add some visual flair */
+  background: linear-gradient(45deg, var(--brand-primary), #28a745);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+.myNav-logo:hover {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   CENTER SECTION - NAVIGATION LINKS
+   ======================================== */
+
+.myNav-center {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.myNav-center a {
+  /* Remove default link styles */
+  text-decoration: none;
+  
+  /* Typography */
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 16px;
+  
+  /* Layout */
+  padding: 8px 15px;
+  border-radius: 25px;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Hover effect for navigation links */
+.myNav-center a:hover {
+  color: var(--brand-primary);
+  background-color: var(--bg-hover);
+  transform: translateY(-2px);
+}
+
+/* Active link styling */
+.myNav-active {
+  color: var(--brand-primary) !important;
+  background-color: var(--bg-hover) !important;
+  box-shadow: 0 2px 8px var(--shadow-medium);
+}
+
+/* Add a cool underline effect */
+.myNav-center a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--brand-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.myNav-center a:hover::after,
+.myNav-active::after {
+  width: 80%;
+}
+
+/* ========================================
+   RIGHT SECTION - ACTION BUTTONS
+   ======================================== */
+
+.myNav-right {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.react-icon-btn {
+  /* Remove default button styles */
+  background: none;
+  border: none;
+  
+  /* Layout */
+  position: relative;
+  padding: 10px;
+  border-radius: 50%;
+  
+  /* Typography */
+  font-size: 20px;
+  color: var(--text-primary);
+  cursor: pointer;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+.react-icon-btn:hover {
+  color: var(--brand-primary);
+  background-color: var(--bg-hover);
+  transform: scale(1.1);
+}
+
+/* Counter badges on buttons */
+.react-icon-btn span {
+  /* Position the badge */
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  
+  /* Styling */
+  background-color: #dc3545;
+  color: var(--text-white);
+  border-radius: 50%;
+  
+  /* Size and spacing */
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Typography */
+  font-size: 12px;
+  font-weight: bold;
+  
+  /* Animation */
+  animation: pulse 2s infinite;
+}
+
+/* Pulse animation for counter badges */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ========================================
+   MOBILE MENU TOGGLE BUTTON
+   ======================================== */
+
+.myNav-toggle-btn {
+  /* Hide by default - show only on mobile */
+  display: none;
+  
+  /* Remove default button styles */
+  background: none;
+  border: none;
+  
+  /* Styling */
+  color: var(--text-primary);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+.myNav-toggle-btn:hover {
+  color: var(--brand-primary);
+  transform: rotate(90deg);
+}
+
+/* ========================================
+   EXTRA SPACING ELEMENT
+   ======================================== */
+
+.myNav-extra {
+  /* Add some space below the navigation */
+  height: 20px;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE STYLES
+   ======================================== */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .myNav-center {
+    gap: 15px;
+  }
+  
+  .myNav-center a {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .myNav-right {
+    gap: 10px;
+  }
+  
+  .react-icon-btn {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  /* Top bar adjustments */
+  .myNav-top-bar {
+    padding: 5px 15px;
+    font-size: 12px;
+  }
+  
+  /* Main navigation adjustments */
+  .myNav-main {
+    padding: 10px 15px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  /* Show mobile toggle button */
+  .myNav-toggle-btn {
+    display: block;
+    order: 3;
+  }
+  
+  /* Logo adjustments */
+  .myNav-logo {
+    font-size: 20px;
+  }
+  
+  /* Center navigation - mobile dropdown */
+  .myNav-center {
+    /* Hide by default on mobile */
+    display: none;
+    
+    /* When shown, take full width */
+    width: 100%;
+    order: 4;
+    
+    /* Stack vertically */
+    flex-direction: column;
+    gap: 10px;
+    
+    /* Spacing */
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* Show center navigation when menu is open */
+  .myNav-main.open .myNav-center {
+    display: flex;
+  }
+  
+  /* Right section adjustments */
+  .myNav-right {
+    gap: 5px;
+    order: 2;
+  }
+  
+  .react-icon-btn {
+    font-size: 16px;
+    padding: 6px;
+  }
+  
+  /* Counter badge adjustments */
+  .react-icon-btn span {
+    min-width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: -3px;
+    right: -3px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Focus styles for keyboard navigation */
+.myNav-theme-toggle:focus,
+.myNav-profile button:focus,
+.myNav-center a:focus,
+.react-icon-btn:focus,
+.myNav-toggle-btn:focus {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   ADDITIONAL ENHANCEMENTS
+   ======================================== */
+
+/* Loading state for smooth theme transitions */
+.myNav-main,
+.myNav-top-bar {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root[data-theme="light"] {
+    --border-color: #000000;
+    --text-primary: #000000;
+  }
+  
+  :root[data-theme="dark"] {
+    --border-color: #ffffff;
+    --text-primary: #ffffff;
+  }
+}
+
+/* Print styles */
+@media print {
+  .myNav-top-bar,
+  .myNav-main {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  background: darkred;
+}

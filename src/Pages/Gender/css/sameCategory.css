@@ -1,0 +1,641 @@
+/* ============================================
+   SAME CATEGORY COMPONENT CSS - BEGINNER FRIENDLY
+   E-commerce Product Grid with Light & Dark Mode
+============================================ */
+
+/* CSS Variables for Easy Theme Management */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f4;
+  --bg-card: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #e0e0e0;
+  --border-hover: #d0d0d0;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --price-color: #e74c3c;
+  --sale-color: #27ae60;
+  --discount-bg: #ff6b6b;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2a2a2a;
+  --bg-card: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --border-color: #404040;
+  --border-hover: #555555;
+  --shadow-light: rgba(255, 255, 255, 0.05);
+  --shadow-medium: rgba(255, 255, 255, 0.1);
+  --shadow-hover: rgba(255, 255, 255, 0.15);
+  --accent-color: #4dabf7;
+  --accent-hover: #339af0;
+  --success-color: #51cf66;
+  --warning-color: #ffd43b;
+  --danger-color: #ff6b6b;
+  --price-color: #ff7979;
+  --sale-color: #00d2d3;
+  --discount-bg: #ff6b6b;
+  --gradient-primary: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
+  --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+
+
+/* ============================================
+   MAIN CONTAINER STYLES
+============================================ */
+
+.sc-container {
+  /* Layout */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  
+  /* Appearance */
+  background-color: var(--bg-primary);
+  
+  /* Smooth transitions for theme changes */
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   SECTION TITLE STYLES
+============================================ */
+
+.sc-title {
+  /* Typography */
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  
+  /* Layout */
+  margin: 40px 0 32px 0;
+  padding: 0 20px;
+  
+  /* Appearance */
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+/* Title Underline Effect */
+.sc-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* First title margin adjustment */
+.sc-title:first-child {
+  margin-top: 0;
+}
+
+/* ============================================
+   EMPTY STATE STYLES
+============================================ */
+
+.sc-empty {
+  /* Typography */
+  font-size: 18px;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  
+  /* Layout */
+  padding: 60px 20px;
+  margin: 0;
+  
+  /* Appearance */
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+}
+
+/* ============================================
+   PRODUCT GRID STYLES
+============================================ */
+
+.sc-grid {
+  /* Grid Layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  
+  /* Layout */
+  margin-bottom: 48px;
+  padding: 0 4px;
+}
+
+/* ============================================
+   PRODUCT CARD STYLES
+============================================ */
+
+.sc-card {
+  /* Layout */
+  background: var(--gradient-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  
+  /* Appearance */
+  box-shadow: 0 4px 16px var(--shadow-light);
+  backdrop-filter: blur(10px);
+  
+  /* Behavior */
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card Hover Effect */
+.sc-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+/* Card Active Effect */
+.sc-card:active {
+  transform: translateY(-4px) scale(1.01);
+  transition: all 0.1s ease;
+}
+
+/* Subtle shine effect on hover */
+.sc-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.sc-card:hover::before {
+  animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   PRODUCT IMAGE STYLES
+============================================ */
+
+.sc-img {
+  /* Layout */
+  width: 100%;
+  height: 200px;
+  
+  /* Appearance */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  
+  /* Effects */
+  transition: all 0.3s ease;
+  background-color: var(--bg-tertiary);
+}
+
+/* Image Hover Effect */
+.sc-card:hover .sc-img {
+  transform: scale(1.05);
+  border-radius: 8px;
+}
+
+/* Image Loading State */
+.sc-img[src=""], .sc-img:not([src]) {
+  background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* ============================================
+   PRODUCT NAME STYLES
+============================================ */
+
+.sc-name {
+  /* Typography */
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  
+  /* Layout */
+  margin: 0 0 12px 0;
+  
+  /* Text overflow handling */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* Animation */
+  transition: color 0.3s ease;
+}
+
+/* Name Hover Effect */
+.sc-card:hover .sc-name {
+  color: var(--accent-color);
+}
+
+/* ============================================
+   PRICE SECTION STYLES
+============================================ */
+
+.sc-price {
+  /* Layout */
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Original Price (Strikethrough) */
+.sc-price s {
+  /* Typography */
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+  
+  /* Appearance */
+  text-decoration: line-through;
+  text-decoration-color: var(--price-color);
+  text-decoration-thickness: 2px;
+}
+
+/* Sale Price (Current Price) */
+.sc-price b {
+  /* Typography */
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sale-color);
+  
+  /* Animation */
+  transition: all 0.3s ease;
+}
+
+/* Price Hover Effect */
+.sc-card:hover .sc-price b {
+  transform: scale(1.05);
+  color: var(--accent-color);
+}
+
+/* ============================================
+   DISCOUNT BADGE STYLES
+============================================ */
+
+.sc-discount {
+  /* Typography */
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  
+  /* Layout */
+  padding: 4px 8px;
+  
+  /* Appearance */
+  background-color: var(--discount-bg);
+  border-radius: 12px;
+  
+  /* Animation */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Discount Badge Hover Effect */
+.sc-card:hover .sc-discount {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+}
+
+/* Discount Badge Pulse Animation */
+.sc-discount::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.sc-card:hover .sc-discount::after {
+  left: 100%;
+}
+
+/* ============================================
+   PRODUCT DESCRIPTION STYLES
+============================================ */
+
+.sc-desc {
+  /* Typography */
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  
+  /* Layout */
+  margin: 0;
+  
+  /* Text overflow handling */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* Animation */
+  transition: color 0.3s ease;
+}
+
+/* Description Hover Effect */
+.sc-card:hover .sc-desc {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+
+/* Large Tablets */
+@media (max-width: 1024px) {
+  .sc-container {
+    padding: 24px 16px;
+  }
+  
+  .sc-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  
+  .sc-title {
+    font-size: 24px;
+  }
+}
+
+/* Small Tablets */
+@media (max-width: 768px) {
+  .sc-container {
+    padding: 20px 12px;
+  }
+  
+  .sc-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  
+  .sc-card {
+    padding: 16px;
+  }
+  
+  .sc-img {
+    height: 180px;
+  }
+  
+  .sc-title {
+    font-size: 22px;
+    margin: 32px 0 24px 0;
+  }
+  
+  .sc-name {
+    font-size: 16px;
+  }
+  
+  .sc-price b {
+    font-size: 18px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .sc-container {
+    padding: 16px 8px;
+  }
+  
+  .sc-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .sc-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+  
+  .sc-img {
+    height: 160px;
+    border-radius: 8px;
+  }
+  
+  .sc-title {
+    font-size: 20px;
+    margin: 24px 0 20px 0;
+  }
+  
+  .sc-title::after {
+    width: 60px;
+  }
+  
+  .sc-name {
+    font-size: 15px;
+  }
+  
+  .sc-price {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .sc-price b {
+    font-size: 16px;
+  }
+  
+  .sc-desc {
+    font-size: 13px;
+  }
+  
+  .sc-empty {
+    padding: 40px 16px;
+    font-size: 16px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+  .sc-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sc-card {
+    margin: 0 auto;
+    max-width: 280px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+============================================ */
+
+/* Focus styles for keyboard navigation */
+.sc-card:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .sc-card,
+  .sc-img,
+  .sc-name,
+  .sc-price b,
+  .sc-discount {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .sc-card:hover {
+    transform: none !important;
+  }
+  
+  .sc-card:hover .sc-img {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .sc-card {
+    border-width: 2px;
+  }
+  
+  .sc-title {
+    -webkit-text-fill-color: var(--text-primary);
+    background: none;
+  }
+  
+  .sc-discount {
+    border: 2px solid white;
+  }
+}
+
+/* ============================================
+   THEME TRANSITION UTILITY
+============================================ */
+
+.theme-transition * {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+
+/* ============================================
+   LOADING STATES
+============================================ */
+
+/* Card loading skeleton */
+.sc-card.loading {
+  pointer-events: none;
+}
+
+.sc-card.loading .sc-img,
+.sc-card.loading .sc-name,
+.sc-card.loading .sc-price,
+.sc-card.loading .sc-desc {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+============================================ */
+
+@media print {
+  .sc-container {
+    background: white;
+    color: black;
+  }
+  
+  .sc-card {
+    border: 1px solid #000;
+    box-shadow: none;
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  
+  .sc-grid {
+    display: block;
+  }
+  
+  .sc-img {
+    max-height: 150px;
+  }
+}
+
+/* ============================================
+   END OF CSS
+============================================ */

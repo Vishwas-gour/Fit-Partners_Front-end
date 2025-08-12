@@ -1,0 +1,515 @@
+/* ===============================================
+   PROMO PRICE BOX - COMPLETE CSS STYLING
+   Light & Dark Mode Support
+   Beginner Friendly with Comments
+   =============================================== */
+
+/* Root Variables for Easy Theme Management */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-accent: #e3f2fd;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #868e96;
+  --border-color: #dee2e6;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  
+  /* Success/Error Colors */
+  --success-color: #28a745;
+  --success-bg: #d4edda;
+  --error-color: #dc3545;
+  --error-bg: #f8d7da;
+  --warning-color: #ffc107;
+  --warning-bg: #fff3cd;
+  
+  /* Accent Colors */
+  --discount-color: #20c997;
+  --savings-color: #ffc107;
+  --delivery-free: #28a745;
+  
+  /* Button Colors */
+  --btn-primary: #007bff;
+  --btn-primary-hover: #0056b3;
+  --btn-text: #ffffff;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-accent: #1e3a5f;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --border-color: #404040;
+  --shadow-light: rgba(255, 255, 255, 0.1);
+  --shadow-medium: rgba(255, 255, 255, 0.15);
+  
+  /* Adjusted colors for dark mode */
+  --success-color: #40e0d0;
+  --success-bg: rgba(64, 224, 208, 0.1);
+  --error-color: #ff6b6b;
+  --error-bg: rgba(255, 107, 107, 0.1);
+  --warning-color: #ffd93d;
+  --warning-bg: rgba(255, 217, 61, 0.1);
+  
+  --discount-color: #40e0d0;
+  --savings-color: #ffd93d;
+  
+  --btn-primary: #0d6efd;
+  --btn-primary-hover: #0b5ed7;
+}
+
+/* Main Container Styling */
+.mycart-price-box {
+  /* Layout */
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  
+  /* Visual Effects */
+  box-shadow: 0 4px 6px var(--shadow-light), 0 1px 3px var(--shadow-medium);
+  transition: all 0.3s ease;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Hover effect for the main container */
+.mycart-price-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px var(--shadow-light), 0 4px 6px var(--shadow-medium);
+}
+
+/* Promo Code Section */
+.mycart-promo-box {
+  background: var(--bg-accent);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.mycart-promo-box h4 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Promo Input Container */
+.mycart-promo-box > div[style*="display: flex"] {
+  display: flex !important;
+  gap: 8px !important;
+  margin-bottom: 12px;
+}
+
+/* Promo Input Field */
+.mycart-promo-box input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.mycart-promo-box input[type="text"]:focus {
+  border-color: var(--btn-primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.mycart-promo-box input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+/* Apply Button */
+.mycart-promo-box button {
+  padding: 12px 20px;
+  background: var(--btn-primary);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.mycart-promo-box button:hover {
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.mycart-promo-box button:active {
+  transform: translateY(0);
+}
+
+/* Promo Message */
+.mycart-promo-box p {
+  margin: 12px 0 0 0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Success Message (✅) */
+.mycart-promo-box p:has-text("✅"),
+.mycart-promo-box p[style*="color: green"] {
+  background: var(--success-bg);
+  color: var(--success-color);
+  border-left: 4px solid var(--success-color);
+}
+
+/* Error Message (❌) */
+.mycart-promo-box p:has-text("❌") {
+  background: var(--error-bg);
+  color: var(--error-color);
+  border-left: 4px solid var(--error-color);
+}
+
+/* Warning Message (⚠️) */
+.mycart-promo-box p:has-text("⚠️") {
+  background: var(--warning-bg);
+  color: var(--warning-color);
+  border-left: 4px solid var(--warning-color);
+}
+
+/* Price Details Section */
+.mycart-price-box h2 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Individual Price Detail Row */
+.mycart-price-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mycart-price-detail:hover {
+  background: var(--bg-secondary);
+  margin: 0 -12px;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.mycart-price-detail:last-of-type {
+  border-bottom: none;
+}
+
+/* Price Detail Text */
+.mycart-price-detail span:first-child {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.mycart-price-detail span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Discount Styling */
+.mycart-price-detail span[style*="color: #80f8c8ff"],
+.mycart-price-detail .green,
+.mycart-price-detail span:has-text("-₹") {
+  color: var(--discount-color) !important;
+  font-weight: 700 !important;
+}
+
+/* Total Section */
+.mycart-price-detail.total {
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  padding: 16px 0;
+  margin: 8px 0;
+  font-size: 18px;
+  background: var(--bg-secondary);
+  margin: 8px -12px;
+  padding: 16px 12px;
+  border-radius: 8px;
+}
+
+.mycart-price-detail.total b {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Savings Highlight */
+.mycart-price-detail[style*="color: yellow"] {
+  background: var(--warning-bg) !important;
+  color: var(--savings-color) !important;
+  font-weight: 600 !important;
+  padding: 12px !important;
+  margin: 8px -12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--savings-color) !important;
+}
+
+/* Horizontal Rule */
+.mycart-price-box hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  margin: 16px 0;
+}
+
+/* Delivery Information */
+.mycart-price-box p[style*="marginTop"] {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin: 16px 0 !important;
+  font-size: 14px !important;
+  border-left: 4px solid var(--btn-primary) !important;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .mycart-price-box {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .mycart-promo-box {
+    padding: 16px;
+  }
+  
+  .mycart-promo-box > div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .mycart-promo-box button {
+    width: 100%;
+  }
+  
+  .mycart-price-detail {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  
+  .mycart-price-detail.total {
+    font-size: 16px;
+  }
+  
+  .mycart-price-box h2 {
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+  .mycart-price-box {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .mycart-price-detail span:first-child {
+    font-size: 13px;
+  }
+  
+  .mycart-price-detail span:last-child {
+    font-size: 14px;
+  }
+}
+
+/* Theme Toggle Support */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--btn-primary);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+/* Loading States */
+.mycart-promo-box button:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.mycart-promo-box button:disabled:hover {
+  box-shadow: none;
+}
+
+/* Animation for Price Updates */
+.mycart-price-detail span:last-child {
+  transition: all 0.3s ease;
+}
+
+.price-update {
+  animation: priceFlash 0.6s ease;
+}
+
+@keyframes priceFlash {
+  0% { background: var(--warning-bg); }
+  50% { background: var(--success-bg); }
+  100% { background: transparent; }
+}
+
+/* Payment Button Styling */
+.mycart-buy-btn {
+  /* Layout & Sizing */
+  width: 100%;
+  padding: 16px 24px;
+  margin-top: 20px;
+  
+  /* Typography */
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Colors & Background */
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  
+  /* Visual Effects */
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  /* Typography */
+  font-family: inherit;
+}
+
+/* Payment Button Hover Effect */
+.mycart-buy-btn:hover {
+  background: linear-gradient(135deg, #218838, #1ea080);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+/* Payment Button Active State */
+.mycart-buy-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Payment Button Loading State */
+.mycart-buy-btn:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Payment Button Ripple Effect */
+.mycart-buy-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.mycart-buy-btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Dark Mode Payment Button */
+[data-theme="dark"] .mycart-buy-btn {
+  background: linear-gradient(135deg, #40e0d0, #20c997);
+  box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
+}
+
+[data-theme="dark"] .mycart-buy-btn:hover {
+  background: linear-gradient(135deg, #36c7b8, #1ea080);
+  box-shadow: 0 8px 25px rgba(64, 224, 208, 0.4);
+}
+
+/* Payment Button with Icon Support */
+.mycart-buy-btn .payment-icon {
+  margin-right: 8px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* Alternative Payment Button Styles */
+.mycart-buy-btn.secondary {
+  background: linear-gradient(135deg, var(--btn-primary), #0056b3);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.mycart-buy-btn.secondary:hover {
+  background: linear-gradient(135deg, var(--btn-primary-hover), #004085);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+}
+
+/* Payment Button Mobile Responsive */
+@media (max-width: 768px) {
+  .mycart-buy-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+}
+
+
+
+/* Print Styles */
+@media print {
+  .mycart-price-box {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .theme-toggle {
+    display: none;
+  }
+}

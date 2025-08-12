@@ -1,0 +1,367 @@
+/* ================================
+   CSS Variables for Light & Dark Mode
+   ================================ */
+
+:root {
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e1e5e9;
+  --input-bg: #ffffff;
+  --button-primary: #007bff;
+  --button-primary-hover: #0056b3;
+  --button-secondary: #6c757d;
+  --button-secondary-hover: #545b62;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --link-color: #007bff;
+  --link-hover: #0056b3;
+}
+
+/* Dark mode colors - automatically applied when user prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+    --input-bg: #2d2d2d;
+    --button-primary: #0066cc;
+    --button-primary-hover: #004499;
+    --button-secondary: #555555;
+    --button-secondary-hover: #666666;
+    --shadow: rgba(255, 255, 255, 0.1);
+    --error-color: #ff6b6b;
+    --success-color: #51cf66;
+    --link-color: #66b3ff;
+    --link-hover: #4da6ff;
+  }
+}
+
+/* Manual dark mode class - add this class to body for manual toggle */
+.dark-mode {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #404040;
+  --input-bg: #2d2d2d;
+  --button-primary: #0066cc;
+  --button-primary-hover: #004499;
+  --button-secondary: #555555;
+  --button-secondary-hover: #666666;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --error-color: #ff6b6b;
+  --success-color: #51cf66;
+  --link-color: #66b3ff;
+  --link-hover: #4da6ff;
+}
+
+/* ================================
+   Reset and Base Styles
+   ================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ================================
+   Main Container Styles
+   ================================ */
+
+.register-container {
+  min-width: 30vw;
+  padding: 2.5rem;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  /* Center on screen */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* moves element’s center to middle of screen */
+}
+
+/* Hover effect */
+.register-container:hover {
+  box-shadow: 0 12px 35px var(--shadow);
+  transform: translate(-50%, calc(-50% - 2px)); /* keeps center while lifting */
+}
+
+
+/* ================================
+   Header Styles
+   ================================ */
+
+.register-container h2 {
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ================================
+   Form Styles
+   ================================ */
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ================================
+   Input Field Styles
+   ================================ */
+
+.register-container input {
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Input focus state - important for accessibility */
+.register-container input:focus {
+  border-color: var(--button-primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Input hover state */
+.register-container input:hover {
+  border-color: var(--text-secondary);
+}
+
+/* Placeholder text styling */
+.register-container input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+
+.register-container input:invalid:not(:placeholder-shown) {
+  border-color: var(--error-color);
+}
+
+/* ================================
+   Button Styles
+   ================================ */
+
+.register-container button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary button (Send OTP) */
+.register-container button:first-of-type {
+  background-color: var(--button-secondary);
+  color: white;
+  margin-top: 1rem;
+}
+
+.register-container button:first-of-type:hover {
+  background-color: var(--button-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary button (Verify & Register) */
+.register-container button:last-of-type {
+  background-color: var(--button-primary);
+  color: white;
+}
+
+.register-container button:last-of-type:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* Button active state */
+.register-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button loading state (optional) */
+.register-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================================
+   Link Styles
+   ================================ */
+
+.register-container a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.register-container a:hover {
+  color: var(--link-hover);
+  background-color: rgba(0, 123, 255, 0.05);
+  text-decoration: underline;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .register-container {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+    max-width: none;
+  }
+  
+  .register-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .register-container input,
+  .register-container button {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .register-container {
+    margin: 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .register-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .register-container form {
+    gap: 1rem;
+  }
+  
+  .register-container input,
+  .register-container button {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}
+
+/* ================================
+   Accessibility Improvements
+   ================================ */
+
+/* Focus indicators for keyboard navigation */
+.register-container input:focus,
+.register-container button:focus,
+.register-container a:focus {
+  outline: 2px solid var(--button-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .register-container {
+    border: 3px solid var(--text-primary);
+  }
+  
+  .register-container input {
+    border-width: 3px;
+  }
+  
+  .register-container button {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================
+   Additional Form Improvements
+   ================================ */
+
+/* Form group styling for better organization */
+.register-container form > * + * {
+  margin-top: 0; /* Reset margin since we use gap */
+}
+
+/* Error message styling (add these classes to show validation errors) */
+.error-message {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.success-message {
+  color: var(--success-color);
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* Loading spinner (optional - for button loading states) */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

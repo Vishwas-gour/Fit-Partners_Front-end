@@ -1,0 +1,718 @@
+/* =====================================================
+   ADD SHOE FORM CSS - BEGINNER FRIENDLY
+   Multi-Step Form with Light/Dark Mode Support
+   ===================================================== */
+
+/* ROOT VARIABLES - Easy customization */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 3px rgba(49, 130, 206, 0.1);
+  
+  /* Accent Colors */
+  --accent-primary: #3182ce;
+  --accent-secondary: #805ad5;
+  --accent-success: #38a169;
+  --accent-warning: #d69e2e;
+  --accent-danger: #e53e3e;
+  
+  /* Form Colors */
+  --input-bg: #ffffff;
+  --input-border: #cbd5e0;
+  --input-focus: #3182ce;
+  --button-primary: #3182ce;
+  --button-secondary: #718096;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+}
+
+/* DARK MODE VARIABLES */
+
+  :root {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-card: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --border-color: #4a5568;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --input-bg: #2d3748;
+    --input-border: #4a5568;
+  }
+
+/* MANUAL DARK MODE */
+body.dark-mode {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-card: #2d3748;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted: #a0aec0;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --input-bg: #2d3748;
+  --input-border: #4a5568;
+}
+
+/* =====================================================
+   MAIN FORM CONTAINER
+   ===================================================== */
+
+.product-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  min-height: 60vh;
+}
+
+.product-form:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM HEADING */
+.product-form h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: var(--radius-sm);
+}
+
+/* SUB HEADINGS (h4) */
+.product-form h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  text-align: center;
+  position: relative;
+}
+
+.product-form h4::before {
+  content: '●';
+  color: var(--accent-primary);
+  margin-right: var(--spacing-xs);
+  font-size: 1.2rem;
+}
+
+/* =====================================================
+   FORM INPUTS - STEP 1
+   ===================================================== */
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+/* INPUT FOCUS STATES */
+.product-form input:focus,
+.product-form textarea:focus,
+.product-form select:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: var(--shadow-focus);
+  transform: translateY(-1px);
+}
+
+/* INPUT HOVER STATES */
+.product-form input:hover,
+.product-form textarea:hover,
+.product-form select:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* TEXTAREA SPECIFIC */
+.product-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* SELECT DROPDOWN STYLING */
+.product-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 16px;
+  padding-right: calc(var(--spacing-md) + 30px);
+}
+
+/* Dark mode arrow */
+@media (prefers-color-scheme: dark) {
+  .product-form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+}
+
+body.dark-mode .product-form select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* SELECT OPTIONS */
+.product-form select option {
+  padding: var(--spacing-sm);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+/* =====================================================
+   SIZE SELECTION - STEP 3
+   ===================================================== */
+
+.size-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.size-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--border-color);
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  margin: 0 auto;
+}
+
+.size-circle:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--shadow-hover);
+}
+
+.size-circle.selected {
+  border-color: var(--accent-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  transform: scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.size-circle input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* SIZE SELECTION ANIMATION */
+.size-circle.selected::after {
+  content: '✓';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--accent-success);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  animation: checkmark 0.3s ease-out;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =====================================================
+   COLOR SELECTION - STEP 3
+   ===================================================== */
+
+.color-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.color-circle {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-circle:hover {
+  border-color: var(--text-primary);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.color-circle.selected {
+  border-color: var(--text-primary);
+  transform: scale(1.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.color-circle input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Color circle selected checkmark */
+.color-circle.selected::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  animation: checkmark 0.3s ease-out;
+}
+
+/* Special handling for light colors */
+.color-circle.white.selected::after,
+.color-circle.yellow.selected::after,
+.color-circle.lightgray.selected::after {
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* =====================================================
+   IMAGE UPLOAD - STEP 4
+   ===================================================== */
+
+.image-upload {
+  padding: var(--spacing-lg);
+  background-color: var(--bg-secondary);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.image-upload:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--bg-card);
+}
+
+/* IMAGE PREVIEW BOX */
+.preview-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  min-height: 100px;
+}
+
+/* IMAGE WRAPPER */
+.image-wrapper {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.image-wrapper:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* PREVIEW IMAGES */
+.preview-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.preview-image:hover {
+  transform: scale(1.05);
+}
+
+/* REMOVE IMAGE BUTTON */
+.remove-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--accent-danger);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+
+.remove-image:hover {
+  background-color: #c53030;
+  transform: scale(1.1);
+}
+
+/* PLUS ICON (ADD MORE IMAGES) */
+.plus-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 3px dashed var(--accent-primary);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  font-size: 2rem;
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: bold;
+}
+
+.plus-icon:hover {
+  background-color: var(--accent-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =====================================================
+   NAVIGATION BUTTONS
+   ===================================================== */
+
+.step-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 2px solid var(--border-color);
+}
+
+.step-buttons button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PRIMARY BUTTON (Next/Submit) */
+.step-buttons button:first-child {
+  background: linear-gradient(135deg, var(--button-primary), var(--accent-secondary));
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.step-buttons button:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  background: linear-gradient(135deg, #2c5aa0, #6b46c1);
+}
+
+.step-buttons button:first-child:active {
+  transform: translateY(0);
+}
+
+/* SECONDARY BUTTON (Previous) */
+.step-buttons button:last-child {
+  background-color: var(--button-secondary);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.step-buttons button:last-child:hover {
+  background-color: #4a5568;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* BUTTON LOADING STATE */
+.step-buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .product-form {
+    margin: var(--spacing-md);
+    padding: var(--spacing-lg);
+  }
+  
+  .product-form h2 {
+    font-size: 2rem;
+  }
+  
+  .size-checkboxes {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: var(--spacing-sm);
+  }
+  
+  .size-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+  
+  .color-checkboxes {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  }
+  
+  .color-circle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .preview-box {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .step-buttons {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .step-buttons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-form {
+    margin: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+  
+  .product-form h2 {
+    font-size: 1.75rem;
+  }
+  
+  .size-checkboxes,
+  .color-checkboxes {
+    padding: var(--spacing-md);
+  }
+  
+  .preview-box {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  
+  .preview-image {
+    height: 120px;
+  }
+}
+
+/* =====================================================
+   STEP PROGRESS INDICATOR (OPTIONAL)
+   ===================================================== */
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  gap: var(--spacing-sm);
+}
+
+.step-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.step-dot.active {
+  background-color: var(--accent-primary);
+  color: white;
+  transform: scale(1.2);
+}
+
+.step-dot.completed {
+  background-color: var(--accent-success);
+  color: white;
+}
+
+.step-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--border-color);
+  transition: var(--transition);
+}
+
+.step-line.completed {
+  background-color: var(--accent-success);
+}
+
+/* =====================================================
+   ANIMATIONS AND TRANSITIONS
+   ===================================================== */
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-form > * {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* LOADING ANIMATION */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s infinite;
+}
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+
+@media print {
+  .product-form {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .step-buttons {
+    display: none;
+  }
+  
+  .color-circle,
+  .size-circle {
+    border: 2px solid #000 !important;
+  }
+}               

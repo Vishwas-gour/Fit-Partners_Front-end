@@ -1,0 +1,683 @@
+/* ===================================
+   WISHLIST CSS - LIGHT & DARK MODE
+   =================================== */
+
+/* Import the CSS variables if not already included */
+:root {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-accent: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+  --success-color: #22c55e;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --danger-color: #dc2626;
+  --danger-hover: #b91c1c;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --gradient-warning: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-danger: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  --gradient-success: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-accent: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --border-light: #475569;
+  --success-color: #10b981;
+  --error-color: #f87171;
+  --warning-color: #fbbf24;
+  --accent-color: #60a5fa;
+  --accent-hover: #3b82f6;
+  --danger-color: #f87171;
+  --danger-hover: #ef4444;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --gradient-warning: linear-gradient(135deg, #92400e 0%, #a16207 100%);
+  --gradient-danger: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+  --gradient-success: linear-gradient(135deg, #065f46 0%, #047857 100%);
+}
+
+/* ===================================
+   MAIN CONTAINER & LAYOUT
+   =================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Main page title */
+.container > h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, var(--accent-color), var(--success-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+/* Empty wishlist message */
+.wishlist-empty {
+  text-align: center;
+  font-size: 24px;
+  color: var(--text-muted);
+  margin: 60px 0;
+  padding: 40px;
+  background-color: var(--bg-primary);
+  border-radius: 16px;
+  border: 2px dashed var(--border-color);
+  animation: fadeIn 1s ease-out;
+}
+
+/* ===================================
+   WISHLIST CONTAINER LAYOUT
+   =================================== */
+.mywishlist-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  align-items: start;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .mywishlist-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .mywishlist-container {
+    gap: 20px;
+  }
+  
+  .container > h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+}
+
+/* ===================================
+   REMINDER BOX (LEFT SECTION)
+   =================================== */
+.mywishlist-reminder-box {
+  position: sticky;
+  top: 20px;
+  background: var(--gradient-warning);
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-strong);
+  animation: slideInLeft 1s ease-out;
+  overflow: hidden;
+  position: relative;
+}
+
+.mywishlist-reminder-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.mywishlist-reminder-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mywishlist-reminder-box h3 {
+  margin: 0 0 16px 0;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.reminder-text {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* Warning and tip sections */
+.mywishlist-warning,
+.mywishlist-tip {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.mywishlist-warning {
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.mywishlist-tip {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Move all button */
+.mywishlist-move-all-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--success-color), #059669);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mywishlist-move-all-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #059669, var(--success-color));
+}
+
+.mywishlist-move-all-btn:active {
+  transform: translateY(0);
+}
+
+/* ===================================
+   PRODUCT LIST (RIGHT SECTION)
+   =================================== */
+.mywishlist-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===================================
+   INDIVIDUAL WISHLIST ITEM CARD
+   =================================== */
+.mywishlist-card {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  
+  /* Appearance */
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  
+  /* Transitions */
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mywishlist-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-color), var(--success-color));
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.mywishlist-card:hover {
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.mywishlist-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* ===================================
+   PRODUCT IMAGE SECTION
+   =================================== */
+.mywishlist-image-box {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-light);
+  position: relative;
+}
+
+.mywishlist-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mywishlist-card:hover .mywishlist-image-box img {
+  transform: scale(1.1);
+}
+
+/* Heart overlay on image */
+.mywishlist-image-box::after {
+  content: '💖';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive image sizing */
+@media (max-width: 768px) {
+  .mywishlist-image-box {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mywishlist-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .mywishlist-image-box {
+    width: 100%;
+    height: 220px;
+    align-self: center;
+  }
+}
+
+/* ===================================
+   PRODUCT DETAILS SECTION
+   =================================== */
+.mywishlist-details-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mywishlist-name {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.mywishlist-detail {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.mywishlist-detail b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ===================================
+   SIZE AND COLOR SECTIONS
+   =================================== */
+.mywishlist-size-list,
+.mywishlist-color-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mywishlist-size-list b,
+.mywishlist-color-list b {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.mywishlist-size-box {
+  background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.mywishlist-size-box:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-medium);
+}
+
+.mywishlist-color-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  position: relative;
+}
+
+.mywishlist-color-box:hover {
+  transform: scale(1.2);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--accent-color);
+}
+
+/* ===================================
+   PRICE INFORMATION
+   =================================== */
+.mywishlist-price-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  margin: 8px 0;
+}
+
+.mywishlist-price-info span:first-child {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.mywishlist-price-info s {
+  text-decoration-color: var(--error-color);
+}
+
+.mywishlist-discount-label {
+  background: var(--gradient-success);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-light);
+}
+
+.mywishlist-price-info span:last-child {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--success-color);
+}
+
+/* ===================================
+   URGENCY MESSAGE
+   =================================== */
+.mywishlist-urgency {
+  margin: 8px 0;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  color: var(--danger-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--danger-color);
+  font-size: 14px;
+  font-weight: 600;
+  animation: urgencyPulse 3s ease-in-out infinite;
+}
+
+@keyframes urgencyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* ===================================
+   ACTION BUTTONS
+   =================================== */
+.mywishlist-actions-inline {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.mywishlist-buy-btn,
+.mywishlist-remove-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mywishlist-buy-btn {
+  background: var(--gradient-success);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.mywishlist-buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.mywishlist-remove-btn {
+  background: var(--gradient-danger);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.mywishlist-remove-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.mywishlist-buy-btn:active,
+.mywishlist-remove-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile button stacking */
+@media (max-width: 480px) {
+  .mywishlist-actions-inline {
+    flex-direction: column;
+  }
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+/* Staggered card animations */
+.mywishlist-card {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.mywishlist-card:nth-child(1) { animation-delay: 0.1s; }
+.mywishlist-card:nth-child(2) { animation-delay: 0.2s; }
+.mywishlist-card:nth-child(3) { animation-delay: 0.3s; }
+.mywishlist-card:nth-child(4) { animation-delay: 0.4s; }
+.mywishlist-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===================================
+   ACCESSIBILITY IMPROVEMENTS
+   =================================== */
+.mywishlist-buy-btn:focus-visible,
+.mywishlist-remove-btn:focus-visible,
+.mywishlist-move-all-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.mywishlist-card:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mywishlist-card {
+    border-width: 2px;
+  }
+  
+  .mywishlist-discount-label,
+  .mywishlist-buy-btn,
+  .mywishlist-remove-btn {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+@media print {
+  .mywishlist-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .mywishlist-reminder-box {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+  
+  .mywishlist-card {
+    box-shadow: none;
+    border: 1px solid #000;
+    break-inside: avoid;
+  }
+  
+  .mywishlist-buy-btn,
+  .mywishlist-remove-btn,
+  .mywishlist-move-all-btn {
+    display: none;
+  }
+}
+
+/* ===================================
+   LOADING SHIMMER EFFECT
+   =================================== */
+.wishlist-loading {
+  background: linear-gradient(90deg, 
+    var(--bg-secondary) 25%, 
+    var(--bg-accent) 50%, 
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

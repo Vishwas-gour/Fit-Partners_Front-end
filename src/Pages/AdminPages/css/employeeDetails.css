@@ -1,0 +1,412 @@
+/* ==========================================
+   EMPLOYEE DETAILS - BEGINNER FRIENDLY CSS
+   Light & Dark Mode Support
+   ========================================== */
+
+/* CSS Custom Properties (Variables) for easy customization */
+:root {
+  /* Light Mode Colors */
+  --light-bg-primary: #ffffff;
+  --light-bg-secondary: #f8fafc;
+  --light-text-primary: #1e293b;
+  --light-text-secondary: #64748b;
+  --light-border: #e2e8f0;
+  --light-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Dark Mode Colors */
+  --dark-bg-primary: #0f172a;
+  --dark-bg-secondary: #1e293b;
+  --dark-text-primary: #f1f5f9;
+  --dark-text-secondary: #cbd5e1;
+  --dark-border: #334155;
+  --dark-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  
+  /* Accent Colors (same for both modes) */
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container */
+.employee-details {
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Light Mode Styles */
+.employee-details.light-mode {
+  background-color: var(--light-bg-secondary);
+  color: var(--light-text-primary);
+}
+
+/* Dark Mode Styles */
+.employee-details.dark-mode {
+  background-color: var(--dark-bg-primary);
+  color: var(--dark-text-primary);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-lg);
+}
+
+.theme-btn {
+  background: none;
+  border: 2px solid;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 60px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode .theme-btn {
+  border-color: var(--light-border);
+  color: var(--light-text-secondary);
+  background-color: var(--light-bg-primary);
+}
+
+.light-mode .theme-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--light-shadow);
+}
+
+.dark-mode .theme-btn {
+  border-color: var(--dark-border);
+  color: var(--dark-text-secondary);
+  background-color: var(--dark-bg-secondary);
+}
+
+.dark-mode .theme-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--dark-shadow);
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal);
+}
+
+.light-mode .header {
+  background-color: var(--light-bg-primary);
+  box-shadow: var(--light-shadow);
+  border: 1px solid var(--light-border);
+}
+
+.dark-mode .header {
+  background-color: var(--dark-bg-secondary);
+  box-shadow: var(--dark-shadow);
+  border: 1px solid var(--dark-border);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.employee-email {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.light-mode .employee-email {
+  color: var(--light-text-secondary);
+}
+
+.dark-mode .employee-email {
+  color: var(--dark-text-secondary);
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-bottom: var(--spacing-2xl);
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  min-width: 180px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light Mode Button Styles */
+.light-mode .nav-btn {
+  background-color: var(--light-bg-primary);
+  color: var(--light-text-primary);
+  border-color: var(--light-border);
+  box-shadow: var(--light-shadow);
+}
+
+.light-mode .nav-btn:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px -8px var(--primary-color);
+}
+
+.light-mode .nav-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Button Styles */
+.dark-mode .nav-btn {
+  background-color: var(--dark-bg-secondary);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-border);
+  box-shadow: var(--dark-shadow);
+}
+
+.dark-mode .nav-btn:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px -8px var(--primary-color);
+}
+
+.dark-mode .nav-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Button Icons */
+.btn-icon {
+  font-size: 1.3rem;
+  transition: transform var(--transition-fast);
+}
+
+.nav-btn:hover .btn-icon {
+  transform: scale(1.1);
+}
+
+/* Content Area */
+.content-area {
+  transition: all var(--transition-normal);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  min-height: 400px;
+}
+
+.light-mode .content-area {
+  background-color: var(--light-bg-primary);
+  box-shadow: var(--light-shadow);
+  border: 1px solid var(--light-border);
+}
+
+.dark-mode .content-area {
+  background-color: var(--dark-bg-secondary);
+  box-shadow: var(--dark-shadow);
+  border: 1px solid var(--dark-border);
+}
+
+/* Welcome Message */
+.welcome-message {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.welcome-message h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary-color);
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .employee-details {
+    padding: var(--spacing-md);
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-btn {
+    min-width: 100%;
+    max-width: 300px;
+  }
+  
+  .header {
+    padding: var(--spacing-lg);
+  }
+  
+  .content-area {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .employee-details {
+    padding: var(--spacing-sm);
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .employee-email {
+    font-size: 1rem;
+  }
+  
+  .nav-btn {
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    min-width: 100%;
+  }
+  
+  .header {
+    padding: var(--spacing-md);
+  }
+  
+  .content-area {
+    padding: var(--spacing-md);
+  }
+  
+  .welcome-message h2 {
+    font-size: 1.5rem;
+  }
+  
+  .welcome-message p {
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility Improvements */
+.nav-btn:focus,
+.theme-btn:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion for Users who Prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading Animation (Optional - for future use) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-area {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Print Styles */
+@media print {
+  .theme-toggle {
+    display: none;
+  }
+  
+  .employee-details {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  .nav-btn {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}

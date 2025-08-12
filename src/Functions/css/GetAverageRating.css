@@ -1,0 +1,35 @@
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.rating-star {
+  font-size: 16px;
+}
+
+.rating-none {
+  background-color: #95a5a6; /* grey */
+}
+
+.rating-bad {
+  background-color: #e74c3c; /* red */
+}
+
+.rating-average {
+  background-color: #f39c12; /* orange */
+}
+
+.rating-good {
+  background-color: #3498db; /* blue */
+}
+
+.rating-excellent {
+  background-color: #27ae60; /* green */
+}
+
