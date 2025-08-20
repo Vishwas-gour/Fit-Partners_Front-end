@@ -23,9 +23,10 @@ function ShoeDetail() {
     API.get("/cart/count").then(res => dispatch(setCartCount(res.data)));
   }, [dispatch, id]);
 
+  console.log(shoe)
   useEffect(() => {
     setLoading(true);
-    const minTime = new Promise((resolve) => setTimeout(resolve, 500));
+    const minTime = new Promise((resolve) => setTimeout(resolve, 100));
     const fetchData = API.get(`/shoes/details/${id}`);
 
     Promise.all([minTime, fetchData])
@@ -112,6 +113,23 @@ function ShoeDetail() {
               />
             ))}
           </div>
+                   <div className="sd-rating-summary">
+            <div className="sd-rating-left">
+              <h2>{(shoe.ratings.reduce((a, b) => a + b, 0) / (totalRatings || 1)).toFixed(1)} ★</h2>
+              <p>{totalRatings} Ratings</p>
+            </div>
+            <div className="sd-rating-right">
+              {[5, 4, 3, 2, 1].map(star => (
+                <div key={star} className="sd-rating-row">
+                  <span>{star} ★</span>
+                  <div className="sd-bar">
+                    <div className={`sd-fill sd-star-${star}`} style={{ width: `${getPercentage(ratingCount[star])}%` }}></div>
+                  </div>
+                  <span>{ratingCount[star]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Right side */}
@@ -131,12 +149,9 @@ function ShoeDetail() {
           <div className="sd-available">
             <label>Size</label>
             <div className="sd-sizes sd-meta-data">
-              {shoe.sizes.map((size, index) => (
-                <div
-                  key={index}
-                  className={`sd-size-box ${selectedSize === size ? "sd-active-size" : ""}`}
-                  onClick={() => setSelectedSize(size)}
-                >
+              {shoe.sizes.sort((a,b)=> a-b).map((size, index) => (
+                <div key={index} className={`sd-size-box ${selectedSize === size ? "sd-active-size" : ""}`}
+                  onClick={() => setSelectedSize(size)}>
                   UK {size}
                 </div>
               ))}
@@ -161,23 +176,7 @@ function ShoeDetail() {
             <button className="sd-btn" onClick={handleAddToWishlist}>Add to Wishlist</button>
           </div>
 
-          <div className="sd-rating-summary">
-            <div className="sd-rating-left">
-              <h2>{(shoe.ratings.reduce((a, b) => a + b, 0) / (totalRatings || 1)).toFixed(1)} ★</h2>
-              <p>{totalRatings} Ratings</p>
-            </div>
-            <div className="sd-rating-right">
-              {[5, 4, 3, 2, 1].map(star => (
-                <div key={star} className="sd-rating-row">
-                  <span>{star} ★</span>
-                  <div className="sd-bar">
-                    <div className={`sd-fill sd-star-${star}`} style={{ width: `${getPercentage(ratingCount[star])}%` }}></div>
-                  </div>
-                  <span>{ratingCount[star]}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+ 
         </div>
       </div>
 

@@ -16,7 +16,7 @@ function Wishlist() {
 
   const fetchWishlist = () => {
     setLoading(true);
-    const minTime = new Promise((resolve) => setTimeout(resolve, 500)); // ✅ 500ms delay
+    const minTime = new Promise((resolve) => setTimeout(resolve, 100)); // ✅ 500ms delay
 
     Promise.all([
       minTime,

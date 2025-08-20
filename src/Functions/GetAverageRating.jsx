@@ -5,6 +5,31 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import './css/GetAverageRating.css';
 import { FaStar } from "react-icons/fa";
+
+export const GetStar = ({averageRating}) =>{
+
+  
+  // Generate star icons
+  const renderStars = (averageRating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (averageRating >= i) {
+        stars.push(<StarIcon key={i} className="star full" />);
+      } else if (averageRating >= i - 0.5) {
+        stars.push(<StarHalfIcon key={i} className="star half" />);
+      } else {
+        stars.push(<StarOutlineIcon key={i} className="star empty" />);
+      }
+    }
+    return stars;
+  };
+    return (
+    <div className="rating-stars">
+      {renderStars(averageRating)}
+    </div>
+  );
+
+}
 export const GetAverageRating = ({ shoeId }) => {
   const [avgRating, setAvgRating] = useState(0);
 

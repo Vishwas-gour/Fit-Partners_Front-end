@@ -13,18 +13,19 @@ const AddShoe = () => {
     const [loading, setLoading] = useState(false);
 
     const [product, setProduct] = useState({
-        id:"", name: "", brand: "", stock: "", description: "",
+        id: "", name: "", brand: "", stock: "", description: "",
         salePrice: "", costPrice: "", discountParentage: "",
         category: "", gender: "", material: "", weight: "",
     });
     const [selectedSizes, setSelectedSizes] = useState([]);
+
     const [selectedColors, setSelectedColors] = useState([]);
     const [images, setImages] = useState([]);
 
     useEffect(() => {
         if (updateData) {
             setProduct({
-                id:updateData.id || "",
+                id: updateData.id || "",
                 name: updateData.name || "",
                 brand: updateData.brand || "",
                 stock: updateData.stock || "",
@@ -37,8 +38,8 @@ const AddShoe = () => {
                 material: updateData.material || "",
                 weight: updateData.weight || "",
             });
-            setSelectedSizes(updateData.sizes || []);
-            setSelectedColors(updateData.colors || []);
+            setSelectedSizes((updateData.sizes || []).map(String));
+            setSelectedColors((updateData.colors || []).map(String));
             setImages([]); // Don’t prefill images
         }
     }, [updateData]);
@@ -47,11 +48,13 @@ const AddShoe = () => {
         setProduct({ ...product, [e.target.name]: e.target.value });
     };
 
-    const handleSizeToggle = (size) => {
-        setSelectedSizes((prev) =>
-            prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-        );
-    };
+    console.log("updateData->", updateData);
+  const handleSizeToggle = (size) => {
+  size = String(size); // normalize
+  setSelectedSizes((prev) =>
+    prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+  );
+};
 
     const handleColorToggle = (color) => {
         setSelectedColors((prev) =>
@@ -73,10 +76,10 @@ const AddShoe = () => {
                 if (!name || !brand || !stock || !description || !weight || !salePrice || !costPrice)
                     return alert("Fill all fields in Step 1");
 
-               await API.post(`/admin/addShoe/addStep1`, {
-  id: shoeId,
-  name, brand, stock, description, weight, salePrice, costPrice, discountParentage,
-});
+                await API.post(`/admin/addShoe/addStep1`, {
+                    id: shoeId,
+                    name, brand, stock, description, weight, salePrice, costPrice, discountParentage,
+                });
             }
 
             if (step === 2) {

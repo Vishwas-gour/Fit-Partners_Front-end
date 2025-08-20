@@ -27,7 +27,7 @@ function OrderList() {
 
   const fetchOrders = () => {
     setLoading(true);
-    const minTime = new Promise(resolve => setTimeout(resolve, 500));
+    const minTime = new Promise(resolve => setTimeout(resolve, 100));
     const ordersApi = API.get("/order/orders");
 
     Promise.all([minTime, ordersApi])

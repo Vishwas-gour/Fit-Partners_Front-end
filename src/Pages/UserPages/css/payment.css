@@ -24,6 +24,10 @@
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
 }
+.payment-discount{
+  background-color: red !important;
+  color: rgb(255, 255, 255) !important;
+}
 
 /* Dark Mode Colors */
 [data-theme="dark"] {

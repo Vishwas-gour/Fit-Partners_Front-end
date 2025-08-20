@@ -26,7 +26,7 @@ function Cart() {
 
   const fetchCart = () => {
     setLoading(true);
-    const minTime = new Promise(resolve => setTimeout(resolve, 500));
+    const minTime = new Promise(resolve => setTimeout(resolve, 100));
     const cartApi = API.get("/cart");
 
     Promise.all([minTime, cartApi])

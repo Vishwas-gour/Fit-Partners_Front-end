@@ -22,7 +22,7 @@ function PaymentForm() {
 
   const fetchData = () => {
     setLoading(true);
-    const minTime = new Promise((resolve) => setTimeout(resolve, 500));
+    const minTime = new Promise((resolve) => setTimeout(resolve, 100));
     const cartApi = API.get("/cart");
     const userApi = API.get("/user/profile");
 
@@ -51,7 +51,7 @@ function PaymentForm() {
   if (loading) {
     return (
       <EmptyPage
-        text="Loading..."
+        text="Payment page Loading..."
         height="80vh"
         width="100%"
         fontSize="40px"
@@ -137,7 +137,7 @@ function PaymentForm() {
                       <span>
                         <s>₹{item.salePrice}</s>
                       </span>
-                      <span className="discount">({item.discountPercent}% OFF)</span>
+                      <span className="payment-discount discount">({item.discountPercent}% OFF)</span>
                       <span>Total: ₹{finalPrice}</span>
                     </div>
 
