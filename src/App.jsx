@@ -98,7 +98,7 @@ function App() {
             {/* User Pages */}
             <Route path="user/profile" element={<MyProfile />} />
             <Route path="user/cart" element={<Cart />} />
-            <Route path="user/wishlist" element={<Wishlist />} />
+            <Route path="/user/wishlist" element={<Wishlist />} />
             <Route path="user/orderList" element={<OrdersList />} />
             <Route path="user/paymentForm" element={<PaymentForm />} />
 
