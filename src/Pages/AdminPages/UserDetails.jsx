@@ -64,14 +64,14 @@ function UserDetail() {
       <h2>User Dashboard</h2>
 
       <div className="stats">
+        <p><strong>Total  Orders:</strong> {orders.length}</p>
         <p><strong>Total Products Ordered:</strong> {countAllItems()}</p>
         <p><strong>PLACED:</strong> {statusCount("PLACED")}</p>
         <p><strong>ON_THE_WAY:</strong> {statusCount("ON_THE_WAY")}</p>
         <p><strong>DELIVERED:</strong> {statusCount("DELIVERED")}</p>
         <p><strong>CANCELLED:</strong> {statusCount("CANCELLED")}</p>
         <p><strong>RETURNED:</strong> {statusCount("RETURNED")}</p>
-        <button
-          className={user.isBlocked ? "unblock-btn" : "block-btn"}
+        <button className={user.isBlocked ? "unblock-btn" : "block-btn"}
           onClick={handleBlockToggle}
         >
           {user.isBlocked ? "Unblock User" : "Block User"}

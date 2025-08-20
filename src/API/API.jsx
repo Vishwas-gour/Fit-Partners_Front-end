@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:8080',
+  // baseURL: 'http://localhost:8080',
+  baseURL: 'https://fit-partners-backend.up.railway.app',
 });
 
 API.interceptors.request.use(

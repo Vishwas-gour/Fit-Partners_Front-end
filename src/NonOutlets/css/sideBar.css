@@ -1,343 +1,270 @@
+/* ============================================
+   SIDEBAR CSS - BEGINNER FRIENDLY
+   Light & Dark Mode Support
+   ============================================ */
+
+/* CSS Variables (Custom Properties) for Easy Theme Management */
 :root {
-    --sidebar-bg: #1e293b;
-    --sidebar-text: #ffffff;
-    --sidebar-title-color: #ffffff;
-    --sidebar-hover-bg: rgba(255, 255, 255, 0.1);
-    --sidebar-active-bg: #3b82f6;
-    --sidebar-active-hover: #2563eb;
-    --sidebar-logout-bg: #dc2626;
-    --sidebar-logout-hover: #b91c1c;
-    --sidebar-border: rgba(255, 255, 255, 0.1);
-    --sidebar-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
-    --sidebar-padding: 2rem 1.5rem;
-    --link-padding: 1rem 1.5rem;
-    --link-gap: 1rem;
-    --nav-gap: 0.5rem;
-
-    --sidebar-width: 280px;
-    --border-radius: 0.5rem;
-    --font-size-title: 1.5rem;
-    --font-size-link: 1rem;
-    --icon-size: 1.25rem;
-
-    --transition-speed: 0.3s;
-    --hover-transform: translateX(5px);
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-hover: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
 }
 
-.dark-mode {
-    --sidebar-bg: #0f172a;
-    --sidebar-text: #f1f5f9;
-    --sidebar-title-color: #f8fafc;
-    --sidebar-hover-bg: rgba(255, 255, 255, 0.15);
-    --sidebar-active-bg: #60a5fa;
-    --sidebar-active-hover: #3b82f6;
-    --sidebar-logout-bg: #ef4444;
-    --sidebar-logout-hover: #dc2626;
-    --sidebar-border: rgba(255, 255, 255, 0.15);
-    --sidebar-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-hover: #404040;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-color: #404040;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --accent-color: #4dabf7;
+  --accent-hover: #339af0;
+  --success-color: #51cf66;
+  --danger-color: #ff6b6b;
+  --danger-hover: #ff5252;
 }
 
-
- 
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
-
- .app {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     transition: all var(--transition-speed) ease;
- }
-
- /* ========================================
-           SIDEBAR MAIN CONTAINER
-           ========================================
-        */
- .sidebar {
-     height: 100vh;
-     width: fit-content;
-     background-color: var(--sidebar-bg);
-     padding: 1rem 2rem;
-     box-shadow: var(--sidebar-shadow);
-
-     scrollbar-width: none;
-     transition: all var(--transition-speed) ease;
-     animation: slideInLeft var(--transition-speed) ease-out;
- }
-
- /* Sidebar entry animation */
- @keyframes slideInLeft {
-     from {
-         transform: translateX(-100%);
-         opacity: 0;
-     }
-
-     to {
-         transform: translateX(0);
-         opacity: 1;
-     }
- }
-
- /* ========================================
-           SIDEBAR TITLE
-           ========================================
-        */
- .sidebar-title {
-     /* === STYLING === */
-     color: var(--sidebar-title-color);
-     font-size: var(--font-size-title);
-     font-weight: 700;
-     text-align: center;
-
-     /* === SPACING === */
-     margin-bottom: 2rem;
-     padding-bottom: 1rem;
-
-     /* === BORDER === */
-     border-bottom: 2px solid var(--sidebar-border);
-
-     /* === ANIMATION === */
-     animation: fadeInDown var(--transition-speed) ease-out 0.2s both;
- }
-
- @keyframes fadeInDown {
-     from {
-         opacity: 0;
-         transform: translateY(-20px);
-     }
-
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
-
- /* ========================================
-           SIDEBAR NAVIGATION
-           ========================================
-        */
- .sidebar-nav {
-     display: flex;
-     flex-direction: column;
-     gap: var(--nav-gap);
- }
-
- /* ========================================
-           SIDEBAR LINKS & BUTTONS
-           ========================================
-        */
- .sidebar-link {
-     /* === LAYOUT === */
-     display: flex;
-     align-items: center;
-     gap: var(--link-gap);
-     width: 100%;
-
-     /* === STYLING === */
-     padding: var(--link-padding);
-     color: var(--sidebar-text);
-     background: none;
-     border: none;
-     border-radius: var(--border-radius);
-
-     /* === TYPOGRAPHY === */
-     font-weight: 500;
-     font-size: var(--font-size-link);
-     text-decoration: none;
-     text-align: left;
-
-     /* === INTERACTION === */
-     cursor: pointer;
-
-     /* === ANIMATIONS === */
-     transition: all var(--transition-speed) ease;
-
-     /* === STAGGERED ENTRY ANIMATION === */
-     animation: fadeInUp var(--transition-speed) ease-out both;
- }
-
- /* Staggered animation delays for each link */
- .sidebar-link:nth-child(1) {
-     animation-delay: 0.1s;
- }
-
- .sidebar-link:nth-child(2) {
-     animation-delay: 0.2s;
- }
-
- .sidebar-link:nth-child(3) {
-     animation-delay: 0.3s;
- }
-
- .sidebar-link:nth-child(4) {
-     animation-delay: 0.4s;
- }
-
- .sidebar-link:nth-child(5) {
-     animation-delay: 0.5s;
- }
-
- .sidebar-link:nth-child(6) {
-     animation-delay: 0.6s;
- }
-
- .sidebar-link:nth-child(7) {
-     animation-delay: 0.7s;
- }
-
- @keyframes fadeInUp {
-     from {
-         opacity: 0;
-         transform: translateY(20px);
-     }
-
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
-
- /* ========================================
-           LINK HOVER EFFECTS
-           ========================================
-        */
- .sidebar-link:hover {
-     background-color: var(--sidebar-hover-bg);
-     transform: var(--hover-transform);
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
- }
-
- /* ========================================
-           ACTIVE LINK STYLES
-           ========================================
-        */
- .sidebar-link.active {
-     background-color: var(--sidebar-active-bg);
-     color: white;
-     font-weight: 600;
-     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
- }
-
- .sidebar-link.active:hover {
-     background-color: var(--sidebar-active-hover);
- }
-
- /* ========================================
-           SIDEBAR ICONS
-           ========================================
-        */
- .sidebar-icon {
-     font-size: var(--icon-size);
-     min-width: 24px;
-     display: inline-block;
-     text-align: center;
- }
-
- /* ========================================
-           LOGOUT BUTTON SPECIAL STYLING
-           ========================================
-        */
- .sidebar-link.logout {
-     margin-top: 2rem;
-     background-color: var(--sidebar-logout-bg);
-     color: white;
-     font-weight: 600;
- }
-
- .sidebar-link.logout:hover {
-     background-color: var(--sidebar-logout-hover);
-     transform: var(--hover-transform);
- }
-
- /* ========================================
-           ACCESSIBILITY
-           ========================================
-        */
- .sidebar-link:focus {
-     outline: 2px solid var(--sidebar-active-bg);
-     outline-offset: 2px;
- }
-
- .sidebar-link.logout:focus {
-     outline-color: var(--sidebar-logout-bg);
- }
-
- /* ========================================
-           RESPONSIVE DESIGN
-           ========================================
-        */
- @media (max-width: 768px) {
-     .sidebar {
-         width: 100%;
-         height: auto;
-         position: relative;
-     }
- }
-
- /* ========================================
-           DEMO STYLES (REMOVE THESE IN YOUR APP)
-           ========================================
-        */
- .sidebar-theme-toggle {
-     position: fixed;
-      
-     top: 1rem;
-     right: 1rem;
-     z-index: 1000;
-     padding: 0.5rem 1rem;
-     background-color: #3b82f6;
-     color: white;
-     border: none;
-     border-radius: 0.5rem;
-     cursor: pointer;
-     font-weight: 600;
-     transition: all 0.3s ease;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
- }
-
- .sidebar-theme-toggle:hover {
-     background-color: #2563eb;
-     transform: translateY(-2px);
- }
-
- .demo-container {
-     display: flex;
- }
-
- .demo-content {
-     margin-left: 280px;
-     padding: 2rem;
-     background-color: #f8fafc;
-     min-height: 100vh;
-     flex: 1;
- }
-
- .dark-mode .demo-content {
-     background-color: #1f2937;
-     color: white;
- }
-
- .sidebar-toggle {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 2000;
-  padding: 0.5rem 1rem;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-.sidebar-toggle:hover {
-  background-color: #2563eb;
-  transform: translateY(-2px);
-}
-
 
     
+/* Sidebar Title */
+.sidebar-title {
+  /* Text Styling */
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  
+  /* Decoration */
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  
+  /* Animation */
+  transition: color 0.3s ease;
+}
+
+/* Navigation Container */
+.sidebar-nav {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between links */
+  flex-grow: 1; /* Take up remaining space */
+}
+
+/* Navigation Links and Logout Button */
+.sidebar-link {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between icon and text */
+  padding: 12px 16px;
+  
+  /* Styling */
+  color: var(--text-secondary);
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%; /* Full width */
+  text-align: left;
+  
+  /* Animation */
+  transition: all 0.3s ease;
+  position: relative; /* For pseudo-element positioning */
+}
+
+/* Hover Effects for Links */
+.sidebar-link:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  transform: translateX(5px); /* Slide in effect */
+  padding-left: 20px; /* Increase left padding on hover */
+}
+
+/* Active Link Styling (React Router's active class) */
+.sidebar-link.active {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* Active Link Hover (different from regular hover) */
+.sidebar-link.active:hover {
+  background-color: var(--accent-hover);
+  transform: translateX(3px); /* Less movement for active links */
+}
+
+/* Icon Styling */
+.sidebar-icon {
+  font-size: 18px;
+  width: 20px; /* Fixed width for alignment */
+  text-align: center;
+  flex-shrink: 0; /* Don't shrink the icon */
+}
+
+/* Special Styling for Logout Button */
+.sidebar-link.logout {
+  /* Position at bottom */
+  margin-top: auto; /* Push to bottom */
+  margin-bottom: 10px;
+  
+  /* Different colors for logout */
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  
+  /* Hover effects for logout */
+  &:hover {
+    background-color: var(--danger-color);
+    color: white;
+    border-color: var(--danger-hover);
+  }
+}
+
+/* Loading Animation (Optional - can be used for future enhancements) */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation to sidebar when it loads */
+.sidebar {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Responsive Design for Tablets and Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%; /* Full width on small screens */
+    height: auto;
+    position: relative; /* Not fixed on mobile */
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+  }
+  
+  .sidebar-nav {
+    flex-direction: row; /* Horizontal layout on mobile */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .sidebar-link {
+    flex-direction: column; /* Stack icon and text vertically */
+    text-align: center;
+    min-width: 80px;
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+  
+  .sidebar-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-theme-toggle {
+    margin-bottom: 15px;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* Extra Small Screens (Phones in portrait) */
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 15px 10px;
+  }
+  
+  .sidebar-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .sidebar-link {
+    min-width: 70px;
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  
+  .sidebar-icon {
+    font-size: 16px;
+  }
+}
+
+/* Focus States for Accessibility */
+.sidebar-link:focus,
+.sidebar-theme-toggle:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Smooth Scrolling for Sidebar Content (if content overflows) */
+.sidebar-nav {
+  overflow-y: auto; /* Allow scrolling if content is too tall */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--text-secondary) var(--bg-secondary); /* Firefox */
+}
+
+/* Custom Scrollbar for Webkit Browsers (Chrome, Safari, Edge) */
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--text-primary);
+}
+
+/* ============================================
+   BEGINNER TIPS:
+   
+   1. CSS Variables (--variable-name) make it easy to change colors
+   2. The :root selector defines global variables
+   3. [data-theme="dark"] overrides variables for dark mode
+   4. Flexbox (display: flex) makes layout easier
+   5. Transitions create smooth animations
+   6. @media queries make it responsive
+   7. :hover, :active, :focus are pseudo-classes for interactions
+   8. Transform and box-shadow create visual effects
+   
+   To customize:
+   - Change colors by modifying the CSS variables at the top
+   - Adjust spacing by changing padding and margin values
+   - Modify animations by changing transition durations
+   - Update responsive breakpoints in @media queries
+   ============================================ */

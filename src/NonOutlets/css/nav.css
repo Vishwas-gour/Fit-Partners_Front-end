@@ -567,3 +567,48 @@
 .logout-btn:hover {
   background: darkred;
 }
+
+.myNav-left .shoes-logo {
+  border-radius: 100% 100% 0 0;
+  position: absolute;
+  height: 6rem;
+  z-index: 1000;
+  left: 13rem;
+  top: 0.1rem;
+  transform-origin:top;
+  animation: swing 4s ease-in-out infinite;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+}
+
+
+/* Dark theme: make logo white */
+[data-theme="light"] .myNav-left .shoes-logo {
+  filter: invert(0);
+}
+[data-theme="dark"] .myNav-left .shoes-logo {
+  filter: invert(1);
+}
+
+
+/* Swing keyframes */
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg); /* left */
+  }
+  50% {
+    transform: rotate(30deg); /* right */
+  }
+  75% {
+    transform: rotate(-30deg); /* left again */
+  }
+  100% {
+    transform: rotate(0deg); /* back to center */
+  }
+}
+
+
+
+

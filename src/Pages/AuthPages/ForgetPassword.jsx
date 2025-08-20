@@ -76,26 +76,17 @@ const ForgetPassword = () => {
     <div className="register-container">
       <h2>Forgot Password</h2>
       <form>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <input  name="email"  type="email"  placeholder="Email"  value={formData.email}  onChange={handleChange}  required/>
 
         {!otpSent && (
-          <button type="button" onClick={sendOtp} disabled={sendingOtp}>
-            {sendingOtp ? "Sending OTP..." : "Send OTP"}
-          </button>
+          <button type="button" onClick={sendOtp} disabled={sendingOtp}>{sendingOtp ? "Sending OTP..." : "Send OTP"}</button>
         )}
 
         {otpSent && (
           <>
-            <input  name="otp"  type="text"  placeholder="Enter OTP"  value={formData.otp}  onChange={handleChange}/>
-            <input  name="newPassword"  type="password"  placeholder="New Password"  value={formData.newPassword}  onChange={handleChange}/>
-            <input  name="confirmPassword"  type="password"  placeholder="Confirm Password"  value={formData.confirmPassword}  onChange={handleChange}/>
+            <input name="otp" type="text" placeholder="Enter OTP" value={formData.otp} onChange={handleChange} />
+            <input name="newPassword" type="password" placeholder="New Password" value={formData.newPassword} onChange={handleChange} />
+            <input name="confirmPassword" type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
             <button type="button" onClick={resetPassword} disabled={resetting}>
               {resetting ? "Resetting..." : "Verify & Reset"}
             </button>

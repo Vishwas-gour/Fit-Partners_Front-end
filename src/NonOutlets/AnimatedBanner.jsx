@@ -16,7 +16,7 @@ const AnimatedBanner = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             // Fade out
-            setIsVisible(false);         
+            setIsVisible(false);
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % messages.length);
                 setIsVisible(true);
@@ -29,10 +29,13 @@ const AnimatedBanner = () => {
 
     return (
         <div className="banner-container">
-                <div className={`some-details ${isVisible ? 'fade-in' : 'fade-out'}`}>
+            <div className={`some-details ${isVisible ? 'fade-in' : 'fade-out'}`}>
                 <span className="sliding-text">
                     {messages[currentIndex]}
                 </span>
+            </div>
+            <div className = "show-time">
+
             </div>
         </div>
     );

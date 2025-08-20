@@ -1,10 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./css/sideBar.css";
-import { useState } from "react";
+
 
 const SideBar = () => {
   const role = localStorage.getItem("role");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+ 
   const nav = useNavigate();
 
   const adminLinks = [
@@ -28,20 +28,14 @@ const SideBar = () => {
         nav("/login"); // change to your login path
     };
   // Inside SideBar
-  const toggleTheme = () => {
-    const newTheme = isDarkMode ? "light" : "dark";
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.setAttribute("data-theme", newTheme);
-  };
+  
 
   const links = role === "ROLE_ADMIN" ? adminLinks : employeeLinks;
   const title = role === "ROLE_ADMIN" ? "Admin Panel" : "Employee Panel";
 
   return (
-    <div className={`sidebar ${isDarkMode ? "dark-mode" : ""}`}>
-      <button onClick={toggleTheme} className="sidebar-theme-toggle">
-        {isDarkMode ? "☀️ Light" : "🌙 Dark"} Mode
-      </button>
+    <div className='sidebar'>
+  
 
       <h2 className="sidebar-title">{title}</h2>
       <nav className="sidebar-nav">

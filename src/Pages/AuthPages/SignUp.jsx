@@ -13,7 +13,7 @@ const SignUp = () => {
     username: "",
     email: "",
     password: "",
-    role: "USER",
+    role: "ROLE_USER",
     phone: "",
     houseNumber: "",
     street: "",

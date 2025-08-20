@@ -1,9 +1,8 @@
 import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AnimatedBanner from './AnimatedBanner';
 import './css/nav.css';
-// import './css/search.css';
+import shoes from '../img/shoes1.png'
 
 import { SlLocationPin } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
@@ -70,9 +69,11 @@ function MyNav() {
             <div className={`myNav-main ${rotate ? "open" : ""}`}>
                 <ul className="myNav-left">
                     <Link to='/' className="myNav-logo">FitPartners.com</Link>
+                        <img className='shoes-logo' src={shoes} alt="ssd" />
                 </ul>
 
                 <ul className="myNav-center">
+                   
                     <NavLink to="user/shoes" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Shoes</NavLink> |
                     <NavLink to="user/shoes/men" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Men</NavLink> |
                     <NavLink to="user/shoes/women" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Women</NavLink> |
@@ -90,8 +91,8 @@ function MyNav() {
                     {rotate ? <HiOutlineX size={26} /> : <HiOutlineMenu size={26} />}
                 </button>
             </div>
-        
-    
+
+
         </>
     );
 }

@@ -1,5 +1,8 @@
  .banner-container {
      /* Container setup */
+     /* margin: 1rem 0; */
+
+     border-bottom: 1px solid rgb(150, 150, 150);
      width: 100%;
      position: relative;
      overflow: hidden;
@@ -7,9 +10,9 @@
 
  .some-details {
      /* Basic styling - same as your original */
-     background-color: black;
+     background-color: rgba(255, 255, 255, 0.998);
      text-align: center;
-     color: wheat;
+     color: rgb(0, 0, 0);
      letter-spacing: 2px;
      font-family: monospace;
 
@@ -19,14 +22,8 @@
      font-size: 14px;
      font-weight: 400;
      line-height: 1.4;
-
-     /* Smooth transition for text changes */
      transition: opacity 0.6s ease-in-out;
-
-     /* Ensure text doesn't break awkwardly */
      white-space: nowrap;
-
-     /* For very long text on mobile */
      overflow: hidden;
  }
 
