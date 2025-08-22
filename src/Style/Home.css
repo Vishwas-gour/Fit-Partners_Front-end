@@ -439,3 +439,10 @@ body {
     --shadow-medium: rgba(255, 255, 255, 0.4);
   }
 }
+
+.video .caption{
+  position: absolute;
+  z-index: 1000;
+  bottom: 0px;
+
+}

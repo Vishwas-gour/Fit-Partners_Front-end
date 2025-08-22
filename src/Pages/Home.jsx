@@ -4,14 +4,20 @@ import Slide from '../Components/Slide';
 import AnimatedBanner from '../NonOutlets/AnimatedBanner';
 import '../Style/Home.css';
 
+
 function Home() {
- 
+
 
   return (
     <>
-    <AnimatedBanner   />
+      <AnimatedBanner />
 
-      <Slide />
+<div className='video'>
+    <video src="https://res.cloudinary.com/dmqa8d6yq/video/upload/v1755879613/shoee_ts5svl.mp4" autoPlay loop muted playsInline style={{ width: "100%", height: "73vh", objectFit: "cover", cursor: "pointer" }}/>
+    <div className='caption'>Best Deals</div>
+</div>
+
+      {/* <Slide /> */}
       <div className='home'>
         <div className='sec-1 sec' >
           <h2 className='heading'>Shop For</h2>

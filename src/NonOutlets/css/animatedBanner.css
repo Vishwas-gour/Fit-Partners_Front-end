@@ -1,113 +1,36 @@
- .banner-container {
-     /* Container setup */
-     /* margin: 1rem 0; */
+:root {
+  --banner-bg: #111;          /* dark theme background */
+  --banner-text: #fff;        /* text color */
+  --banner-accent: #ff4c29;   /* highlight/accent */
+}
 
-     border-bottom: 1px solid rgb(150, 150, 150);
-     width: 100%;
-     position: relative;
-     overflow: hidden;
- }
+[data-theme="light"] {
+  --banner-bg: #f9f9f9;
+  --banner-text: #111;
+  --banner-accent: #0077ff;
+}
 
- .some-details {
-     /* Basic styling - same as your original */
-     background-color: rgba(255, 255, 255, 0.998);
-     text-align: center;
-     color: rgb(0, 0, 0);
-     letter-spacing: 2px;
-     font-family: monospace;
+.banner-container {
+  background-color: var(--banner-bg);
+  color: var(--banner-text);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
 
-     /* Additional improvements */
-     padding: 12px 20px;
-     margin: 0;
-     font-size: 14px;
-     font-weight: 400;
-     line-height: 1.4;
-     transition: opacity 0.6s ease-in-out;
-     white-space: nowrap;
-     overflow: hidden;
- }
+.sliding-text {
+  color: var(--banner-accent);
+}
 
- /* Fade animation class */
- .some-details.fade-in {
-     opacity: 1;
- }
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
 
- .some-details.fade-out {
-     opacity: 0;
- }
-
-
- .enhanced-banner {
-     background: linear-gradient(45deg, #000000, #1a1a1a);
-     text-align: center;
-     color: wheat;
-     letter-spacing: 2px;
-     font-family: monospace;
-     padding: 12px 20px;
-     font-size: 14px;
-     position: relative;
-     overflow: hidden;
-     transition: all 0.6s ease;
- }
-
- /* Sliding text effect */
- .enhanced-banner .sliding-text {
-     display: inline-block;
-     animation: slideIn 0.6s ease-in-out;
- }
-
- @keyframes slideIn {
-     0% {
-         opacity: 0;
-         transform: translateY(-20px);
-     }
-
-     100% {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
-
- /* Hover effect */
- .enhanced-banner:hover {
-     background: linear-gradient(45deg, #1a1a1a, #333333);
-     transform: scale(1.02);
- }
-
- /* Demo controls */
- .demo-controls {
-     text-align: center;
-     margin: 20px 0;
-     padding: 20px;
-     background: #f5f5f5;
-     border-radius: 8px;
- }
-
- .demo-controls h3 {
-     margin-bottom: 15px;
-     color: #333;
- }
-
- .control-button {
-     margin: 5px;
-     padding: 8px 16px;
-     background: #007bff;
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 14px;
- }
-
- .control-button:hover {
-     background: #0056b3;
- }
-
- .version-title {
-     margin: 30px 0 10px 0;
-     padding: 10px;
-     background: #e9ecef;
-     border-left: 4px solid #007bff;
-     font-family: 'Arial', sans-serif;
-     font-weight: bold;
- }
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}

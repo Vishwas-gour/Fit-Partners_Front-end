@@ -40,20 +40,32 @@ function Shoes() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const fetchShoes = () => {
-    setLoading(true);
-    const url = gender ? `/shoes/${gender}` : "/shoes/allShoes";
-    const params = { page, size: 3, ...filters };
-    if (gender) params.gender = gender;
+const fetchShoes = () => {
+  setLoading(true);
 
-    API.get(url, { params })
-      .then(res => {
-        setShoes(res.data.content || res.data); // content for pagination, fallback for single array
-        setTotalPages(res.data.totalPages || 1);
-      })
-      .catch(err => console.log(err))
-      .finally(() => setTimeout(() => setLoading(false), 500));
-  };
+  let url;
+  let params = { page, size: 6, ...filters };
+
+  if (Object.values(filters).some(v => v)) {
+    // if any filter has value → call filter API
+    url = "/shoes/filter";
+  } else if (gender) {
+    url = `/shoes/${gender}`;
+    params = { page, size: 6, gender };
+  } else {
+    url = "/shoes/allShoes";
+    params = { page, size: 6};
+  }
+
+  API.get(url, { params })
+    .then(res => {
+      setShoes(res.data.content || res.data);
+      setTotalPages(res.data.totalPages || 1);
+    })
+    .catch(err => console.log(err))
+    .finally(() => setTimeout(() => setLoading(false), 500));
+};
+
 
   useEffect(() => {
     fetchShoes();

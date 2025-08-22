@@ -9,6 +9,8 @@ const navigate = useNavigate();
 
         <div className='slidebar' >
             <Carousel black>
+
+
                 <Carousel.Item>
                     <img  onClick={()=>navigate('/allProducts')} src="https://neemans.com/cdn/shop/files/ND_-_COB_-_Web_Banner_-_Desktop_1920_x_800_px.jpg?v=1739879182&width=1500" alt="" />
                     <Carousel.Caption>
@@ -17,9 +19,7 @@ const navigate = useNavigate();
                 </Carousel.Item>
                 <Carousel.Item>
                     <img  onClick={()=>navigate('/allProducts')} src="https://neemans.com/cdn/shop/files/Web_Banner_UC_-_Desktop_1920_x_800.jpg?v=1740038766&width=1500" alt="" />
-
                     <Carousel.Caption>
-
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>

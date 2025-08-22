@@ -8,6 +8,7 @@ import SidebarLayout from "./Layouts/SidebarLayout.jsx";
 
 // AuthPages
 import Home from "./Pages/Home.jsx";
+import ChatBot from "./Pages/ChatBot.jsx";
 import Login from './Pages/AuthPages/Login.jsx';
 import SignUp from './Pages/AuthPages/SignUp.jsx';
 import ForgetPassword from './Pages/AuthPages/ForgetPassword.jsx';
@@ -94,6 +95,7 @@ function App() {
             <Route path="user/shoes/:gender" element={<Shoes />} />
             <Route path="user/shoes/details/:id" element={<ShoeDetail />} />
             <Route path="user/same-category" element={<SameCategory />} />
+            <Route path="user/chat-bot" element={<ChatBot />} />
 
             {/* User Pages */}
             <Route path="user/profile" element={<MyProfile />} />
