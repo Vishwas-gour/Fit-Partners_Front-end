@@ -78,7 +78,7 @@ function MyNav() {
                     <NavLink to="user/shoes/men" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Men</NavLink> |
                     <NavLink to="user/shoes/women" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Women</NavLink> |
                     <NavLink to="user/shoes/kids" end className={({ isActive }) => isActive ? "myNav-active" : ""}>Kids</NavLink>  |
-                    <NavLink to="user/chat-bot" end className={({ isActive }) => isActive ? "myNav-active" : ""}>ChatBot</NavLink>
+                    {/* <NavLink to="user/chat-bot" end className={({ isActive }) => isActive ? "myNav-active" : ""}>ChatBot</NavLink> */}
                 </ul>
 
                 <ul className="myNav-right">
