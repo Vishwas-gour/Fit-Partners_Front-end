@@ -18,9 +18,15 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // 📌 Email validation
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   const otpSend = async (e) => {
     e.preventDefault();
-    if (!formData.email) return alert("Enter your email first!");
+    if (!formData.email.trim()) return alert("Enter your email first!");
+    if (!isValidEmail(formData.email)) return alert("Enter a valid email address!");
 
     try {
       setSendingOtp(true);
@@ -39,7 +45,11 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!formData.otp) return alert("Enter OTP to login");
+
+    if (!formData.password.trim()) return alert("Password is required!");
+    if (formData.password.length < 6)
+      return alert("Password must be at least 6 characters long!");
+    if (!formData.otp.trim()) return alert("Enter OTP to login");
 
     try {
       setLoggingIn(true);
@@ -74,36 +84,59 @@ const Login = () => {
   };
 
   return (
-<div className="auth-container">
+    <div className="auth-container">
       <div className="register-container">
-      <h2>Login</h2>
-      <form>
-        vishwasgour2002@gmail.com
-        <input  name="email"  type="email"  placeholder="Email"  value={formData.email}  onChange={handleChange}  required/>
-        <input  name="password"  type="password"  placeholder="Password"  value={formData.password}  onChange={handleChange}  required/>
+        <h2>Login</h2>
+        <form>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-        <div className="links">
-          <Link to="/forgetPassword">Forget Password</Link>&nbsp; | &nbsp; 
-          <Link to="/signUp"> SignUp</Link>
-        </div>
+          <div className="links">
+            <Link to="/forgetPassword">Forget Password</Link>&nbsp; | &nbsp;
+            <Link to="/signUp"> SignUp</Link>
+          </div>
 
-        {!otpSent && (
-          <button type="button" onClick={otpSend} disabled={sendingOtp}>
-            {sendingOtp ? "Sending OTP..." : "Send OTP"}
-          </button>
-        )}
-
-        {otpSent && (
-          <>
-            <input  name="otp"  type="text"  placeholder="OTP"  value={formData.otp}  onChange={handleChange}/>
-            <button type="button" onClick={handleLogin} disabled={loggingIn}>
-              {loggingIn ? "Logging in..." : "Verify & Login"}
+          {!otpSent && (
+            <button type="button" onClick={otpSend} disabled={sendingOtp}>
+              {sendingOtp ? "Sending OTP..." : "Send OTP"}
             </button>
-          </>
-        )}
-      </form>
+          )}
+
+          {otpSent && (
+            <>
+              <input
+                name="otp"
+                type="text"
+                placeholder="OTP"
+                value={formData.otp}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                onClick={handleLogin}
+                disabled={loggingIn}
+              >
+                {loggingIn ? "Logging in..." : "Verify & Login"}
+              </button>
+            </>
+          )}
+        </form>
+      </div>
     </div>
-</div>
   );
 };
 

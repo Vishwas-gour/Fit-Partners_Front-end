@@ -23,7 +23,7 @@ const ForgetPassword = () => {
 
   const sendOtp = async (e) => {
     e.preventDefault();
-    if (!formData.email) return alert("Please enter your email!");
+    if (!formData.email.trim()) return alert("Please enter your email!");
 
     try {
       setSendingOtp(true);
@@ -43,9 +43,11 @@ const ForgetPassword = () => {
   const resetPassword = async (e) => {
     e.preventDefault();
 
+    if (!formData.otp.trim()) return alert("Please enter the OTP!");
+    if (formData.newPassword.length < 6)
+      return alert("Password must be at least 6 characters long!");
     if (formData.newPassword !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
+      return alert("Passwords do not match!");
     }
 
     try {
@@ -63,7 +65,7 @@ const ForgetPassword = () => {
         newPassword: formData.newPassword,
       });
 
-      alert("Password changed!");
+      alert("Password changed successfully!");
       navTo("/login");
     } catch (err) {
       alert(err.response?.data || "Failed to reset password!");
@@ -76,18 +78,56 @@ const ForgetPassword = () => {
     <div className="register-container">
       <h2>Forgot Password</h2>
       <form>
-        <input  name="email"  type="email"  placeholder="Email"  value={formData.email}  onChange={handleChange}  required/>
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
 
         {!otpSent && (
-          <button type="button" onClick={sendOtp} disabled={sendingOtp}>{sendingOtp ? "Sending OTP..." : "Send OTP"}</button>
+          <button
+            type="button"
+            onClick={sendOtp}
+            disabled={sendingOtp}
+          >
+            {sendingOtp ? "Sending OTP..." : "Send OTP"}
+          </button>
         )}
 
         {otpSent && (
           <>
-            <input name="otp" type="text" placeholder="Enter OTP" value={formData.otp} onChange={handleChange} />
-            <input name="newPassword" type="password" placeholder="New Password" value={formData.newPassword} onChange={handleChange} />
-            <input name="confirmPassword" type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
-            <button type="button" onClick={resetPassword} disabled={resetting}>
+            <input
+              name="otp"
+              type="text"
+              placeholder="Enter OTP"
+              value={formData.otp}
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="newPassword"
+              type="password"
+              placeholder="New Password (min 6 chars)"
+              value={formData.newPassword}
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              onClick={resetPassword}
+              disabled={resetting}
+            >
               {resetting ? "Resetting..." : "Verify & Reset"}
             </button>
           </>
