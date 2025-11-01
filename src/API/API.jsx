@@ -5,7 +5,7 @@ import axios from 'axios';
 const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:8080"
-    : "https://ec2-13-203-195-90.ap-south-1.compute.amazonaws.com";
+    : "http://ec2-13-203-195-90.ap-south-1.compute.amazonaws.com:8080";
 
 const API = axios.create({
   baseURL: BASE_URL,
