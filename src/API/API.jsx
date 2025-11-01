@@ -5,7 +5,7 @@ import axios from 'axios';
 const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:8080"
-    : "https://FitPartner-env.eba-kxssumfj.ap-south-1.elasticbeanstalk.com";
+    : "https://ec2-13-203-195-90.ap-south-1.compute.amazonaws.com";
 
 const API = axios.create({
   baseURL: BASE_URL,
